@@ -1,0 +1,8 @@
+E:\pos-offline-service\backend\pos\src\main\java\com\pos\config\UserDataLoader.java
+E:\pos-offline-service\backend\pos\src\main\java\com\pos\controller\LoginController.java
+E:\pos-offline-service\backend\pos\src\main\java\com\pos\dto\ForgotRequest.java
+E:\pos-offline-service\backend\pos\src\main\java\com\pos\dto\LoginRequest.java
+E:\pos-offline-service\backend\pos\src\main\java\com\pos\model\User.java
+E:\pos-offline-service\backend\pos\src\main\java\com\pos\PosApplication.java
+E:\pos-offline-service\backend\pos\src\main\java\com\pos\repository\UserRepository.java
+E:\pos-offline-service\backend\pos\src\main\java\com\pos\service\EmailService.java

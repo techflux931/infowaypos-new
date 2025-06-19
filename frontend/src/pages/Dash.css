@@ -1,0 +1,66 @@
+/* Dash.css */
+
+.dash-container {
+  padding: 30px;
+  background: #f9f9f9;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+.dash-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.dash-logo {
+  width: 60px;
+  height: 60px;
+}
+
+.dash-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+}
+
+.dash-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 25px;
+}
+
+.dash-tile {
+  background: white;
+  border: none;
+  border-radius: 14px;
+  padding: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.dash-tile:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+}
+
+.tile-icon {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.tile-label {
+  font-size: 16px;
+  font-weight: bold;
+  color: #222;
+}
+
+.tile-subtext {
+  font-size: 12px;
+  color: #777;
+  margin-top: 6px;
+}

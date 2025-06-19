@@ -1,0 +1,77 @@
+.customer-view-container {
+  max-width: 900px;
+  margin: 30px auto;
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  font-family: Arial, sans-serif;
+}
+
+.customer-view-container h2 {
+  font-size: 24px;
+  color: #08204b;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.customer-search {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.customer-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #f9fbff;
+}
+
+.customer-table th,
+.customer-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.customer-table th {
+  color: #08204b;
+  font-weight: bold;
+}
+
+.customer-actions {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 25px;
+}
+
+.select-btn,
+.add-btn,
+.close-btn {
+  padding: 12px 24px;
+  font-size: 16px;
+  border: 2px solid #08204b;
+  border-radius: 10px;
+  background-color: white;
+  color: #08204b;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.select-btn svg {
+  color: green;
+}
+
+.add-btn svg {
+  color: blue;
+}
+
+.close-btn svg {
+  color: rgb(73, 9, 9);
+}

@@ -1,0 +1,82 @@
+/* DayClose.css */
+.auth-modal {
+  position: fixed;
+  top: 20%;
+  left: 30%;
+  width: 40%;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  font-family: Arial, sans-serif;
+  z-index: 1001;
+  padding: 20px;
+}
+
+.auth-header {
+  background: #0047ab;
+  color: white;
+  padding: 10px 15px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 8px 8px 0 0;
+}
+
+.auth-body {
+  padding: 20px;
+}
+
+.auth-body label {
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.auth-body input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.auth-actions {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 10px;
+}
+
+.key-btn,
+.ok-btn,
+.close-btn {
+  padding: 12px 26px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.key-btn {
+  background-color: #e0f0ff;
+  color: #007bff;
+  border: 1px solid #007bff;
+}
+
+.ok-btn {
+  background-color: #e0ffe0;
+  color: #28a745;
+  border: 1px solid #28a745;
+}
+
+.close-btn {
+  background-color: #ffe0e0;
+  color: #dc3545;
+  border: 1px solid #dc3545;
+}
+
+.keyboard-wrapper {
+  margin-top: 20px;
+}

@@ -1,0 +1,63 @@
+.clear-confirm-modal {
+  width: 320px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding: 20px;
+  position: fixed;
+  top: 30%;
+  left: 40%;
+  z-index: 2000;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.clear-confirm-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.clear-confirm-header .icon {
+  font-size: 40px;
+  color: #1e70bf;
+}
+
+.clear-confirm-header h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.clear-confirm-header p {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.clear-confirm-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.clear-confirm-actions button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 6px;
+  font-weight: bold;
+  min-width: 90px;
+  cursor: pointer;
+  border: 2px solid #28a745;
+  color: #28a745;
+  background: white;
+}
+
+.clear-confirm-actions .yes-btn {
+  color: #28a745;
+}
+
+.clear-confirm-actions .no-btn {
+  color: #28a745;
+}

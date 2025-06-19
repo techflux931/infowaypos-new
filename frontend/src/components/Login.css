@@ -1,0 +1,100 @@
+.login-background {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #07410d, #07e2a4, #027628);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.login-wrapper {
+  text-align: center;
+}
+
+.login-main-logo {
+  width: 500px;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 0 5px white);
+}
+
+.login-title {
+  color: rgb(25, 24, 24);
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.login-box {
+  background: #d2d7d0;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(92, 46, 46, 0.2);
+  width: 380px;
+  text-align: center;
+  animation: slideFade 0.5s ease-in-out;
+}
+
+@keyframes slideFade {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-form input {
+  width: 100%;
+  padding: 12px;
+  margin: 12px 0;
+  border-radius: 6px;
+  border: 1px solid #8393b2;
+  font-size: 16px;
+}
+
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  margin: 10px 0 20px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+}
+
+.forgot-password {
+  background: none;
+  border: none;
+  color: #0056b3;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 14px;
+  padding-left: 10px;
+}
+
+.forgot-password:hover {
+  color: #003366;
+}
+
+.login-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #034835;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #d1e8c9;
+}

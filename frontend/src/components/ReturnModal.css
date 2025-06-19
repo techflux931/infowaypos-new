@@ -1,0 +1,105 @@
+
+.return-modal {
+  position: fixed;
+  top: 20%;
+  left: 32%;
+  width: 600px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  z-index: 1003;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.return-header {
+  background-color: #643fc2;
+  color: white;
+  padding: 16px 24px;
+  font-size: 22px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.return-header .close-btn {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+}
+
+.return-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.return-body label {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.return-body input[type="password"],
+.return-body input[type="text"] {
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+.card-read-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-read-section button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.return-actions {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 16px;
+  gap: 14px;
+}
+
+.return-actions button {
+  padding: 10px 24px;
+  font-size: 15px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  min-width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.return-actions .confirm-btn {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.return-actions .cancel-btn {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}

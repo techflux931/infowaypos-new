@@ -1,0 +1,93 @@
+.sales-type-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.sales-type-box {
+  width: 320px;
+  background-color: #c3c4c5;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(213, 215, 217, 0.2);
+  font-family: sans-serif;
+}
+
+.sales-type-header {
+  background-color: #e4ddec;
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+  font-size: 20px;
+  border-bottom: 1px solid #ccc;
+}
+
+.sales-type-close {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.sales-type-options {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sales-type-option {
+  background-color: #a6b6ac;
+  border: 1px solid #d0d0d0;
+  border-radius: 6px;
+  padding: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.3s;
+}
+
+.sales-type-option:hover {
+  background-color: #e0f0ff;
+}
+
+.sales-type-actions {
+  display: flex;
+  justify-content: space-around;
+  padding: 16px;
+  border-top: 1px solid #ccc;
+}
+
+.sales-type-actions button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: 2px solid #ccc;
+  background-color: #fff;
+  font-size: 16px;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.sales-type-actions .ok-btn {
+  border-color: #28a745;
+  color: #28a745;
+}
+
+.sales-type-actions .close-btn {
+  border-color: #dc3545;
+  color: #dc3545;
+}
