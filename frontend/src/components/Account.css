@@ -1,0 +1,119 @@
+/* ===== Page shell ===== */
+.account-wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #f7f7f7;
+  box-sizing: border-box;
+}
+
+/* ===== Top Bar: left Home, centered title, right spacer ===== */
+.account-topbar {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  padding: 10px 20px;
+  border-bottom: 1px solid #e7e7e7;
+}
+
+.home-btn {
+  background: none;
+  border: none;
+  font-size: 22px;
+  line-height: 1;
+  color: #7c0b5f;
+  cursor: pointer;
+}
+
+.home-btn:focus-visible,
+.account-card:focus-visible {
+  outline: 2px solid #7c0b5f;
+  outline-offset: 3px;
+  border-radius: 12px;
+}
+
+.account-title {
+  justify-self: center;
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  color: #7c0b5f;
+  letter-spacing: 0.2px;
+}
+
+.account-topbar-spacer {
+  width: 24px;
+  height: 24px; /* keeps title perfectly centered */
+}
+
+/* ===== Main ===== */
+.account-main {
+  flex: 1;
+  display: flex;
+  align-items: flex-start; /* start below topbar */
+  justify-content: center;
+  padding: 32px 20px 40px;
+}
+
+/* Cards grid (centered & responsive) */
+.account-cards {
+  width: 100%;
+  max-width: 980px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  justify-items: center;
+}
+
+/* ===== Card ===== */
+.account-card {
+  width: 220px;
+  height: 170px;
+  background: #fff;
+  border: 2px solid transparent;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  padding: 22px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.08s ease;
+}
+
+.account-card:hover {
+  border-color: #d63384;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+.account-card img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.account-card span {
+  font-size: 16px;
+  font-weight: 700;
+  color: #333;
+}
+
+/* ===== Small screens ===== */
+@media (max-width: 520px) {
+  .account-card {
+    width: 200px;
+    height: 160px;
+  }
+  .account-title {
+    font-size: 20px;
+  }
+}
+
+.account-main {
+  align-items: flex-start;   /* pushes cards down */
+}

@@ -1,0 +1,191 @@
+.customer-page {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+  gap: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fff0fb;
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+/* --------- Left Form Section --------- */
+.customer-form {
+  flex: 1.2;
+  background-color: #fef3f8;
+  border: 2px solid #c21682;
+  padding: 15px;
+  border-radius: 12px;
+  overflow-y: auto;
+  max-height: 95vh;
+}
+
+.customer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.customer-header h2 {
+  color: #c21682;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.home-btn {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 5px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Form Grid */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 3px;
+}
+
+.form-group input {
+  padding: 6px 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+/* Form Actions */
+.form-actions {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.save,
+.reset,
+.close {
+  padding: 7px 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.save {
+  background-color: #3cc05f;
+  color: #fff;
+}
+
+.reset {
+  background-color: #ffc107;
+  color: #000;
+}
+
+.close {
+  background-color: #9e9e9e;
+  color: #fff;
+}
+
+/* --------- Right Table Section --------- */
+.customer-table {
+  flex: 1.8;
+  background-color: #fff;
+  border: 2px solid #c21682;
+  padding: 15px;
+  border-radius: 12px;
+  overflow-x: auto;
+}
+
+.customer-table h2 {
+  color: #c21682;
+  margin-bottom: 10px;
+}
+
+.customer-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.customer-table th,
+.customer-table td {
+  padding: 6px 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  white-space: nowrap;
+}
+
+.customer-table th {
+  background-color: #f6e3f1;
+  font-weight: bold;
+}
+
+/* Actions */
+.edit,
+.delete {
+  margin-right: 6px;
+  padding: 4px 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.edit {
+  background-color: #2196f3;
+  color: white;
+}
+
+.delete {
+  background-color: #f44336;
+  color: white;
+}
+
+/* --------- Responsive Design --------- */
+@media screen and (max-width: 1024px) {
+  .customer-page {
+    flex-direction: column;
+  }
+
+  .customer-form,
+  .customer-table {
+    width: 100%;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Email Column Ellipsis */
+.customer-table td:nth-child(5),
+.customer-table th:nth-child(5) {
+  max-width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+}
+/* CustomerPage.css */
+.customer-header {
+  display: flex;
+  align-items: center;
+}
+.customer-header .actions {
+  margin-left: auto;
+  display: flex;
+  gap: 12px;         /* space between Home and X */
+}

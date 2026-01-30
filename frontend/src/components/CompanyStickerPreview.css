@@ -1,0 +1,103 @@
+/* =============================
+   Overlay for Sticker Preview
+============================= */
+.sticker-print-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* =============================
+   Container styled like sticker
+============================= */
+.sticker-print-container {
+  width: 280px;
+  padding: 15px;
+  background: #fff;
+  border: 1px dashed #999;
+  text-align: center;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* =============================
+   Company Logo
+============================= */
+.sticker-logo img {
+  max-width: 100px;
+  max-height: 60px;
+  object-fit: contain;
+  margin-bottom: 8px;
+}
+
+/* =============================
+   Company Info
+============================= */
+.sticker-details {
+  margin-bottom: 10px;
+}
+
+.sticker-name {
+  font-weight: bold;
+  font-size: 16px;
+  color: #000;
+  margin-bottom: 2px;
+}
+
+.sticker-name-ar {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 2px;
+}
+
+.sticker-trn {
+  font-size: 13px;
+  color: #666;
+}
+
+/* =============================
+   Barcode Image
+============================= */
+.sticker-barcode img {
+  margin-top: 10px;
+  width: 100%;
+  max-height: 60px;
+  object-fit: contain;
+}
+
+/* =============================
+   Print Optimization
+============================= */
+@media print {
+  body {
+    background: white !important;
+  }
+
+  .sticker-print-overlay {
+    position: static;
+    width: auto;
+    height: auto;
+    background: none;
+    box-shadow: none;
+  }
+
+  .sticker-print-container {
+    box-shadow: none;
+    border: none;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  .sticker-logo img,
+  .sticker-barcode img {
+    max-height: 60px;
+  }
+}

@@ -1,0 +1,200 @@
+/* src/components/ExpenseForm.css */
+
+:root{
+  --bg:#f7f7fb;
+  --panel:#fff;
+  --brand:#a3006b;
+  --brand-600:#7e0152;
+  --ok:#1f7a3a;
+  --ok-600:#17602e;
+  --danger:#cc3344;
+  --muted:#6b7280;
+  --border:#e5e7eb;
+  --shadow: 0 8px 24px rgba(16,24,40,.06);
+  --radius: 16px;
+  --radius-sm: 10px;
+  --pad: 18px;
+}
+
+* { box-sizing: border-box; }
+body { background: var(--bg); }
+
+.expense-form-page{
+  max-width: 980px;
+  margin: 24px auto;
+  padding: 0 12px;
+}
+
+.expense-form-header{
+  position: relative;
+  display: grid;
+  grid-template-columns: 40px 1fr 40px;
+  align-items: center;
+  gap: 8px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-bottom: none;
+  border-radius: var(--radius) var(--radius) 0 0;
+  padding: 12px var(--pad);
+  box-shadow: var(--shadow);
+}
+.expense-form-header h2{
+  text-align: center;
+  color: var(--brand);
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: .3px;
+}
+
+.home-button,
+.close-button{
+  display: grid;
+  place-items: center;
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #fafafa;
+  cursor: pointer;
+}
+.close-button{ font-size: 22px; line-height: 1; }
+
+.notice-region{ margin-top: 8px; }
+.alert-success,
+.alert-error{
+  display: inline-block;
+  margin: 8px 0 0;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 14px;
+}
+.alert-success{ background: #e8f7ee; color: var(--ok-600); border: 1px solid #bfe6cb; }
+.alert-error{   background: #ffeff0; color: #9d2232; border: 1px solid #f4c9cd; }
+
+/* Tabs */
+.expense-tabs{
+  display: flex; gap: 10px; flex-wrap: wrap;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-top: none;
+  padding: 10px var(--pad);
+}
+.expense-tabs button{
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: #fafafa;
+  cursor: pointer;
+}
+.expense-tabs button.active{
+  background: var(--brand);
+  color: #fff;
+  border-color: var(--brand);
+}
+
+/* Form panel */
+.expense-form{
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 var(--radius) var(--radius);
+  padding: var(--pad);
+  box-shadow: var(--shadow);
+}
+
+.tab-content{
+  margin-top: 8px;
+  display: block;
+}
+
+.grid-2{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.span-2{ grid-column: 1 / -1; }
+
+label{ font-size: 14px; color:#111827; margin-top: 8px; }
+input, select, textarea{
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+  outline: none;
+  background: #fff;
+}
+input:focus, select:focus, textarea:focus{
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px rgba(163,0,107,.12);
+}
+
+small.error{ color: #b42318; margin-top: -4px; display: block; }
+
+/* Attachments */
+.file-list{ margin: 10px 0 0 16px; }
+.file-list li{ list-style: disc; margin-bottom: 4px; }
+.muted{ color: var(--muted); }
+
+/* Buttons */
+.form-buttons{
+  display: flex; gap: 10px; flex-wrap: wrap;
+  margin-top: 18px;
+}
+.btn-secondary,
+.btn-save,
+.btn-cancel{
+  padding: 10px 18px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: #fff;
+  cursor: pointer;
+}
+.btn-secondary:hover{ background:#f5f5f5; }
+
+.btn-save{
+  background: var(--ok);
+  color: #fff;
+  border-color: var(--ok);
+}
+.btn-save:hover{ background: var(--ok-600); }
+
+.btn-cancel{
+  background: #0ea5b7; color:#fff; border-color:#0ea5b7;
+}
+.btn-cancel:hover{ filter: brightness(.95); }
+
+/* Table (list tab) */
+.expense-table{
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 6px;
+  font-size: 14px;
+}
+.expense-table th, .expense-table td{
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+.expense-table thead th{
+  background: #fafafa;
+  font-weight: 600;
+}
+.truncate{
+  max-width: 260px;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.actions button{
+  margin-right: 6px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #fafafa;
+  cursor: pointer;
+}
+.actions button:hover{ background: #f1f1f1; }
+
+/* Responsive */
+@media (max-width: 720px){
+  .grid-2{ grid-template-columns: 1fr; }
+  .truncate{ max-width: 140px; }
+  .expense-form-header{ grid-template-columns: 36px 1fr 36px; }
+}

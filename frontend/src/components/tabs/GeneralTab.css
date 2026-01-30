@@ -1,0 +1,93 @@
+/* ============ Container & title ============ */
+.general-tab-container{
+  max-width:1100px;
+  margin:0 auto;
+  padding:16px 20px;
+}
+.general-tab-container h3{
+  color:#7a0f87;
+  margin:0 0 16px;
+  font-weight:700;
+}
+
+/* ============ Grid (4 cards) ============ */
+.settings-columns{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(220px,1fr));
+  gap:16px;
+}
+.settings-column{
+  background:#fff;
+  border:1px solid #ececf3;
+  border-radius:12px;
+  padding:14px 16px;
+  box-shadow:0 1px 8px rgba(0,0,0,.04);
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+/* Stack to 2 cols / 1 col on small screens */
+@media (max-width:1100px){ .settings-columns{grid-template-columns:repeat(2,1fr);} }
+@media (max-width:640px){ .settings-columns{grid-template-columns:1fr;} }
+
+/* ============ Checkbox / radio ============ */
+.checkbox-item{
+  display:flex;
+  align-items:center;
+  gap:10px;                /* label sits next to the box */
+  font-weight:600;
+  color:#222;
+}
+.checkbox-item input[type="checkbox"]{ width:16px; height:16px; accent-color:#7a0f87; }
+
+.radio-group{
+  display:flex; gap:18px; margin-top:6px;
+}
+.radio-group label{
+  display:flex; align-items:center; gap:6px; font-weight:600; color:#222;
+}
+.radio-group input[type="radio"]{ width:16px; height:16px; accent-color:#7a0f87; }
+
+/* ============ Inputs / selects ============ */
+.general-tab-container select,
+.general-tab-container input[type="text"]{
+  height:36px;
+  padding:0 36px 0 12px;       /* room for arrow */
+  font-size:.95rem;
+  font-weight:600;
+  color:#1d1b22;
+  background:#fff;
+  border:1px solid #cfc9da;    /* softer than the thick purple */
+  border-radius:10px;
+  outline:none;
+  box-shadow:none;
+
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  appearance:none;
+  background-image:
+    url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpolyline points='5,7 10,12 15,7' fill='none' stroke='%237a0f87' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
+  background-repeat:no-repeat;
+  background-position:right 10px center;
+  background-size:16px 16px;
+}
+.general-tab-container select:focus,
+.general-tab-container input[type="text"]:focus{
+  border-color:#7a0f87;
+  box-shadow:0 0 0 3px rgba(122,15,135,.15);
+}
+.general-tab-container select option{
+  color:#1d1b22; background:#fff; font-weight:600;
+}
+
+/* ============ Buttons row ============ */
+.buttons-row{ display:flex; gap:12px; margin-top:18px; }
+.save-btn, .close-btn{
+  height:40px; padding:0 22px; border:0; border-radius:10px;
+  font-weight:700; color:#fff; cursor:pointer;
+}
+.save-btn{ background:#094e04; }
+.save-btn:hover{ background:#1c9806; }
+.close-btn{ background:#e53935; }
+.close-btn:hover{ background:#c62828; }

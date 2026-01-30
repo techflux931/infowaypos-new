@@ -1,139 +1,217 @@
+/* === Modal container === */
 .view-sales-modal {
   position: fixed;
-  top: 15%;
-  left: 28%;
-  width: 750px;
-  height: 550px;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  top: 12%;
+  left: 26%;
+  width: 820px;
+  height: 530px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
   z-index: 1002;
-  font-family: Arial, sans-serif;
-  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
-.view-sales-header {
+/* === Header === */
+.view-sales-header-green {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #5c6bc0;
-  color: white;
-  padding: 16px 24px;
-  font-size: 22px;
+  background: #2e7d32;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 18px;
   font-weight: bold;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
-.view-sales-header .close-button {
+.view-sales-header-green .close-button {
   background: none;
-  color: white;
+  color: #fff;
   border: none;
   font-size: 20px;
   cursor: pointer;
 }
 
+/* === Filters bar === */
 .view-sales-filters {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: auto 1fr 1fr 160px auto auto;
   gap: 10px;
-  padding: 14px 20px 10px;
-  background: #f9f9f9;
+  align-items: center;
+  padding: 10px 20px;
+  background: #f5f6f8;
+  border-bottom: 1px solid #e0e0e0;
 }
 
-.view-sales-filters input {
-  flex: 1;
-  padding: 10px;
-  font-size: 15px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+.view-sales-filters .label {
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
 }
 
 .search-group {
   display: flex;
   align-items: center;
+  gap: 6px;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 0 8px;
+}
+
+.search-group input {
   flex: 1;
-  gap: 5px;
+  border: none;
+  outline: none;
+  padding: 6px 4px;
+  font-size: 14px;
 }
 
 .search-icon {
-  color: #888;
-  margin-left: 8px;
+  color: #666;
+  font-size: 14px;
 }
 
+.name-input,
+.type-input {
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background: #fff;
+  height: 36px;
+}
+
+/* Type dropdown with arrow */
+.type-input {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'><path fill='%23666' d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 14px;
+  cursor: pointer;
+}
+
+.date-btn {
+  padding: 8px 14px;
+  font-size: 13px;
+  background: #1976d2;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.date-btn:hover {
+  background: #145ca8;
+}
+
+/* Date chips (showing chosen dates) */
+.date-chips {
+  display: flex;
+  gap: 8px;
+  padding: 6px 20px;
+}
+.chip {
+  background: #eef2f7;
+  color: #333;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+}
+
+/* === Table === */
 .sales-table {
   width: 100%;
   border-collapse: collapse;
   font-size: 14px;
-  background: white;
   flex: 1;
   overflow-y: auto;
 }
 
-.sales-table th,
-.sales-table td {
-  padding: 12px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-
 .sales-table thead {
-  background: #f2f2f2;
+  background: #1976d2;
+  color: #fff;
   font-weight: bold;
 }
 
-.view-sales-divider {
-  border-top: 2px solid #ccc;
-  margin: 10px 0;
+.sales-table th,
+.sales-table td {
+  padding: 8px 10px;
+  text-align: left;
+  border-bottom: 1px solid #e6e6e6;
 }
 
+.sales-table tbody tr:hover {
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+.sales-table tbody tr.selected {
+  background: #eaf3ff;
+}
+
+/* Print icon in table */
+.print-icon {
+  font-size: 16px;
+  color: #1976d2;
+  cursor: pointer;
+}
+
+/* === Divider === */
+.view-sales-divider {
+  border-top: 1px solid #ddd;
+  margin: 0 20px;
+}
+
+/* === Actions === */
 .view-sales-actions {
   display: flex;
-  justify-content: space-evenly;
-  padding: 12px 20px 20px;
-  gap: 12px;
+  justify-content: center;
+  padding: 14px 20px 18px;
+  gap: 18px;
+  background: #fafafa;
 }
 
 .view-sales-actions button {
-  padding: 10px 18px;
-  font-size: 15px;
-  font-weight: bold;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  min-width: 100px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
+  gap: 6px;
+  min-width: 100px;
+  height: 40px;
+  transition: all 0.2s ease;
 }
 
+/* Action button colors */
 .reprint-btn {
-  background-color: #e0f0ff;
-  color: #007bff;
-  border: 2px solid #007bff;
+  background: #e0e0e0;
+  color: #000;
 }
-
 .edit-btn {
-  background-color: #fff5e0;
-  color: #f0ad4e;
-  border: 1px solid #f0ad4e;
+  background: #fff3cd;
+  color: #856404;
 }
-
 .delete-btn {
-  background-color: #ffe0e0;
-  color: #d9534f;
-  border: 1px solid #d9534f;
-}
-
-.copy-btn {
-  background-color: #e6f0ff;
-  color: #004085;
-  border: 1px solid #004085;
-}
-
-.close-btn {
-  background-color: #f8d7da;
+  background: #f8d7da;
   color: #721c24;
-  border: 1px solid #f5c6cb;
+}
+.copy-btn {
+  background: #d1ecf1;
+  color: #0c5460;
+}
+
+/* Disabled buttons */
+.view-sales-actions button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }

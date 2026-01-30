@@ -1,0 +1,101 @@
+:root{
+  --brand: #7c0b5f;          /* your app’s magenta */
+  --brand-accent: #d63384;   /* hover accent */
+  --card-bg: #ffffff;
+  --page-bg: #f6f7fb;
+  --ring: rgba(214, 51, 132, .35);
+  --shadow: 0 10px 24px rgba(0,0,0,.08);
+  --shadow-hover: 0 16px 28px rgba(0,0,0,.12);
+}
+
+/* Page shell */
+.reports-container{
+  min-height: 100vh;
+  background: var(--page-bg);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.reports-header{
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;  /* title stays centered */
+  align-items: center;
+  padding: 18px 24px 8px;
+}
+.reports-title{
+  grid-column: 2/3;
+  margin: 0;
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--brand);
+  letter-spacing: .2px;
+  text-align: center;
+}
+
+/* Cards grid */
+.cards-grid{
+  width: 100%;
+  max-width: 1120px;
+  margin: 8px auto 40px;
+  padding: 0 20px;
+  display: grid;
+  gap: 22px;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  justify-items: center;
+}
+
+/* Card button */
+.report-card{
+  width: 100%;
+  max-width: 260px;
+  height: 140px;
+  background: var(--card-bg);
+  border: 2px solid transparent;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  cursor: pointer;
+
+  transition: border-color .18s ease, box-shadow .18s ease, transform .08s ease;
+}
+
+.report-card:hover{
+  border-color: var(--brand-accent);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+.report-card:focus{
+  outline: none;
+  border-color: var(--brand-accent);
+  box-shadow: var(--shadow-hover), 0 0 0 6px var(--ring);
+}
+
+/* Icon + label */
+.report-icon{
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.label{
+  font-size: 15px;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  line-height: 1.25;
+}
+
+/* Small screens */
+@media (max-width: 520px){
+  .report-card{ height: 132px; }
+  .report-icon{ width: 56px; height: 56px; }
+  .reports-title{ font-size: 20px; }
+}

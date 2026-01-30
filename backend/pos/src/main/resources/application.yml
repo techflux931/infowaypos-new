@@ -1,0 +1,40 @@
+server:
+  port: ${PORT:8080}
+
+spring:
+  data:
+    mongodb:
+      uri: ${MONGODB_URI:mongodb://localhost:27017/posdb}
+
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
+
+  mail:
+    host: ${MAIL_HOST:smtp.gmail.com}
+    port: ${MAIL_PORT:587}
+    username: ${MAIL_USERNAME:}
+    password: ${MAIL_PASSWORD:}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+app:
+  upload-dir: ${UPLOAD_DIR:uploads}
+
+frontend:
+  origin: ${FRONTEND_ORIGIN:http://localhost:3000}
+
+terminal:
+  host: ${TERMINAL_HOST:localhost}
+  port: ${TERMINAL_PORT:9100}
+  base-url: ${TERMINAL_BASE_URL:http://localhost:9100}
+
+twilio:
+  account-sid: ${TWILIO_ACCOUNT_SID:}
+  auth-token: ${TWILIO_AUTH_TOKEN:}
+  from-number: ${TWILIO_FROM:}

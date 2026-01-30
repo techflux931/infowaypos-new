@@ -1,0 +1,190 @@
+/* ===== PurchaseReport.css ===== */
+
+.rpt-wrap {
+  padding: 14px;
+  background: #f6f7fb;
+  min-height: 100vh;
+  color: #0f172a;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ---------- Header ---------- */
+.rpt-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.rpt-header .left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.rpt-header h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 800;
+  color: #6d28d9;
+}
+.iconbtn {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border: none;
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(2, 6, 23, 0.08);
+}
+
+/* ---------- Error Banner ---------- */
+.rpt-error {
+  background: #fff5f5;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+/* ---------- Toolbar ---------- */
+.rpt-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-end;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 16px;
+}
+.rpt-toolbar .field {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+}
+.rpt-toolbar .field.grow {
+  flex: 1;
+}
+.rpt-toolbar label {
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #334155;
+}
+.rpt-toolbar input,
+.rpt-toolbar select {
+  height: 32px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 0 8px;
+  outline: none;
+}
+.rpt-toolbar input:focus,
+.rpt-toolbar select:focus {
+  border-color: #6d28d9;
+  box-shadow: 0 0 0 3px rgba(109, 40, 217, 0.15);
+}
+.rpt-toolbar .actions {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+}
+.rpt-toolbar .act {
+  border: none;
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-weight: 600;
+  cursor: pointer;
+  color: #fff;
+}
+.rpt-toolbar .act.run { background: #2563eb; }
+.rpt-toolbar .act.export { background: #059669; }
+.rpt-toolbar .act.print { background: #7c3aed; }
+
+/* ---------- Card + Table ---------- */
+.rpt-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 10px;
+  box-shadow: 0 2px 8px rgba(2, 6, 23, 0.06);
+  margin-bottom: 16px;
+}
+.rpt-tablewrap {
+  overflow-x: auto;
+}
+.rpt-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.rpt-table th,
+.rpt-table td {
+  border: 1px solid #e5e7eb;
+  padding: 6px 8px;
+  text-align: left;
+}
+.rpt-table th {
+  background: #f3f4f6;
+  font-weight: 700;
+  font-size: 12px;
+  color: #374151;
+}
+.rpt-table tbody tr:nth-child(even) {
+  background: #fafafa;
+}
+.rpt-empty {
+  text-align: center;
+  color: #64748b;
+  padding: 10px;
+}
+
+/* ---------- Loading ---------- */
+.rpt-loading {
+  padding: 16px;
+  text-align: center;
+  color: #6d28d9;
+  font-weight: 600;
+}
+
+/* ---------- Summary Boxes ---------- */
+.rpt-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.rpt-summary .box {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+}
+.rpt-summary .box .k { font-weight: 600; color: #374151; }
+.rpt-summary .box .v { font-weight: 700; color: #111; }
+
+/* ---------- Pager ---------- */
+.rpt-pager {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+}
+.rpt-pager button {
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 4px 10px;
+  cursor: pointer;
+  background: #fff;
+}
+.rpt-pager button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

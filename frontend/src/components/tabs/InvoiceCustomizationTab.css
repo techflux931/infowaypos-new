@@ -1,0 +1,78 @@
+.invoice-customization-tab {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  max-width: 650px;
+  margin: 0 auto;
+  font-family: "Poppins", sans-serif;
+}
+
+.invoice-customization-tab h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.form-row label {
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #444;
+}
+
+.form-row input[type="file"],
+.form-row select,
+.form-row textarea {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-row select:focus,
+.form-row textarea:focus {
+  border-color: #ff5a8a;
+}
+
+.checkbox-row {
+  flex-direction: row;
+  gap: 20px;
+}
+
+.logo-preview {
+  max-height: 100px;
+  margin-top: 6px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 4px;
+  object-fit: contain;
+}
+
+.save-btn {
+  background-color: #ff5a8a;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.save-btn:hover:not(:disabled) {
+  background-color: #e14b77;
+}
+
+.save-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}

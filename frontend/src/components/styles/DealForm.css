@@ -1,0 +1,97 @@
+:root {
+  --brand: #0d88e6;
+  --brand-dark: #0a6ebd;
+  --text: #111827;
+  --muted: #64748b;
+  --border: #e5e7eb;
+  --shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  --radius: 10px;
+  --font: "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+/* Form card */
+.deal-form {
+  font-family: var(--font);
+  background: #fff;
+  border: 1px solid var(--brand);
+  border-radius: var(--radius);
+  max-width: 520px;
+  margin: 22px auto;
+  padding: 20px;
+  box-shadow: var(--shadow);
+  color: var(--text);
+}
+
+.deal-form h2 {
+  margin: 0 0 18px;
+  text-align: center;
+  color: var(--brand);
+  font-weight: 800;
+}
+
+/* Inputs */
+.deal-form input,
+.deal-form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  font-size: 16px;
+  outline: none;
+  transition: border-color .15s ease, box-shadow .15s ease;
+  background: #fff;
+}
+
+.deal-form input:focus,
+.deal-form textarea:focus {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px rgba(13, 136, 230, 0.15);
+}
+
+.deal-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+/* Primary button */
+.deal-form button {
+  width: 100%;
+  padding: 12px 16px;
+  border: 0;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  background: var(--brand);
+  color: #fff;
+  transition: background .2s ease, filter .2s ease;
+}
+
+.deal-form button:hover { background: var(--brand-dark); }
+.deal-form button:active { filter: brightness(.97); }
+
+.deal-form button:focus-visible {
+  outline: 3px solid rgba(13,136,230,.35);
+  outline-offset: 2px;
+}
+
+/* Optional small home button if present */
+.deal-home-btn {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin: -8px auto 8px;
+  border-radius: 10px;
+  background: var(--brand);
+  color: #fff;
+  cursor: pointer;
+  transition: filter .2s;
+  border: none;
+}
+.deal-home-btn:hover { filter: brightness(.95); }
+
+@media (max-width: 480px) {
+  .deal-form { margin: 14px 12px; padding: 16px; }
+}

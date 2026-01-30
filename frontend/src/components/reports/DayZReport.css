@@ -1,0 +1,123 @@
+/* DayZReport.css */
+
+.dzr-wrap {
+  padding: 12px;
+  background: #f6f7fb;
+  min-height: 100vh;
+  color: #0f172a;
+}
+
+/* Header */
+.dzr-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.dzr-left { display: flex; align-items: center; gap: 8px; }
+.dzr-title { margin: 0; font-weight: 800; font-size: 20px; }
+.dzr-iconbtn, .dzr-close {
+  border: none; background: #fff; border-radius: 10px;
+  width: 36px; height: 36px; display: grid; place-items: center;
+  box-shadow: 0 2px 8px rgba(2, 6, 23, 0.08); cursor: pointer;
+}
+
+/* Toolbar */
+.dzr-toolbar {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(160px, 1fr)) auto;
+  gap: 10px;
+  align-items: end;
+  margin-bottom: 12px;
+}
+.dzr-field { display: flex; flex-direction: column; gap: 6px; }
+.dzr-field input,
+.dzr-field select {
+  height: 36px; border: 1px solid #e5e7eb; border-radius: 10px;
+  padding: 0 10px; background: #fff; outline: none;
+}
+.dzr-field input:focus,
+.dzr-field select:focus {
+  border-color: #6d28d9;
+  box-shadow: 0 0 0 4px rgba(109, 40, 217, 0.15);
+}
+
+.dzr-actions { display: flex; gap: 8px; }
+.act {
+  height: 36px; padding: 0 14px; border: none; border-radius: 10px;
+  cursor: pointer; font-weight: 700; color: #fff;
+}
+.act.run    { background: #6d28d9; }
+.act.export { background: #16a34a; }
+.act.print  { background: #1e3a8a; }
+
+/* Meta pills */
+.dzr-meta {
+  display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 10px;
+}
+.pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: #fff; border: 1px solid #e5e7eb; border-radius: 999px;
+  padding: 6px 12px; font-size: 12px; color: #334155;
+}
+
+/* Cashbox */
+.dzr-cashbox {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 10px; margin-bottom: 12px;
+}
+.dzr-cashbox .card {
+  background: #fff; border: 1px solid #e5e7eb; border-radius: 12px;
+  padding: 12px; display: flex; justify-content: space-between; align-items: center;
+}
+.dzr-cashbox .card.warn { border-color: #ef4444; box-shadow: 0 0 0 3px rgba(239, 68, 68, .12); }
+.dzr-cashbox .k { color: #64748b; font-weight: 600; }
+.dzr-cashbox .v { font-weight: 800; }
+
+/* Card + Table */
+.dzr-card {
+  background: #fff; border: 1px solid #e5e7eb; border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(2, 6, 23, 0.06); overflow: hidden;
+}
+.dzr-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.dzr-table th, .dzr-table td {
+  padding: 10px 12px; border-bottom: 1px solid #f1f5f9;
+}
+.dzr-table thead th {
+  position: sticky; top: 0; background: #f8fafc; z-index: 1;
+  font-weight: 700; font-size: 12px; color: #475569;
+}
+.dzr-th-sortable { user-select: none; cursor: pointer; }
+.dzr-th-sortable:hover { background: #f1f5f9; }
+.dzr-th-lbl { margin-right: 6px; }
+.dzr-sort { font-size: 11px; color: #6d28d9; }
+
+.dzr-empty { text-align: center; padding: 24px; color: #64748b; }
+.dzr-loading { padding: 20px; text-align: center; }
+
+/* Totals */
+.dzr-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 10px; margin-top: 12px;
+}
+.dzr-summary .box {
+  background: #fff; border: 1px solid #e5e7eb; border-radius: 12px;
+  padding: 12px; display: flex; justify-content: space-between; align-items: center;
+}
+.dzr-summary .k { color: #64748b; font-weight: 600; }
+.dzr-summary .v { font-weight: 800; }
+
+/* Pager */
+.dzr-pager {
+  display: flex; gap: 10px; align-items: center; justify-content: center; margin-top: 10px;
+}
+.dzr-pager button {
+  background: #fff; border: 1px solid #e5e7eb; border-radius: 8px;
+  padding: 6px 12px; cursor: pointer;
+}
+
+/* Small screens */
+@media (max-width: 980px) {
+  .dzr-toolbar { grid-template-columns: repeat(2, 1fr); }
+}

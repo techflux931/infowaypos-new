@@ -1,237 +1,603 @@
-
-.pos-container {
+/* =============================== */
+/* BASE / LAYOUT                   */
+/* =============================== */
+.pos-container{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  padding: 10px;
-  background-color: #e9b4da;
-  height: 100dvh;
-  display: flex;
-  flex-direction: column;
+  padding:10px;
+  background:#ebeef0;
+  height:100dvh;
+  display:flex;
+  flex-direction:column;
 }
 
-.pos-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #b30877;
-  color: white;
-  padding: 10px 20px;
+.pos-main{ display:flex; flex:1; margin-top:10px; gap:14px; }
+.pos-left{ flex:3; padding:10px; display:flex; flex-direction:column; height:100%; }
+
+/* =============================== */
+/* HEADER                          */
+/* =============================== */
+.pos-header{
+  display:flex; align-items:center;
+  background:#131313; color:#fff;
+  height:65px; padding:10px 20px;
+}
+.header-left,.header-center,.header-right{ flex:1; display:flex; align-items:center; }
+.header-left{ gap:10px; }
+.header-left img{ width:40px; height:40px; }
+.header-center{ justify-content:center; gap:15px; font-size:15px; font-weight:700; }
+.header-right{ justify-content:flex-end; gap:14px; font-size:20px; }
+.header-right svg{ cursor:pointer; }
+.pos-title{ font-size:12px; font-weight:700; }
+.pos-meta span{ margin-right:10px; }
+.pos-controls svg{ margin-left:12px; cursor:pointer; }
+
+/* header calculator icon */
+.icon-btn{ background:transparent; border:0; padding:0; margin-right:12px; cursor:pointer; display:inline-flex; align-items:center; justify-content:center; }
+.icon-btn img{ width:20px; height:20px; filter:brightness(0) invert(1); opacity:.9; }
+.icon-btn:hover img{ opacity:1; }
+
+/* =============================== */
+/* BARCODE                         */
+/* =============================== */
+.barcode-input{
+  width:80%; padding:10px; margin-bottom:10px; font-size:16px;
 }
 
-.pos-title {
-  font-size: 12px;
-  font-weight: bold;
+/* =============================== */
+/* ITEM TABLE                      */
+/* =============================== */
+.item-list{ height:240px; background:#fff; overflow-y:auto; margin:10px 0 20px; border:1px solid #ccc; border-radius:5px; }
+.item-table-header,.item-row{
+  display:grid;
+  grid-template-columns: 50px 200px 70px 60px 80px 60px 100px 100px;
+  padding:6px 4px; text-align:center; font-size:16px; border-bottom:1px solid #d9e9ee;
+}
+.item-table-header{ background:#e9ecef; font-weight:700; border-bottom:2px solid #c9ced6; }
+.item-row:nth-child(even){ background:#f7f9fb; }
+.item-row span{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.item-row.selected{ background:#fff5cc; font-weight:700; border:1px solid #f3c44c; }
+
+/* =============================== */
+/* TOTALS                          */
+/* =============================== */
+.totals-bar{
+  display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap;
+  background:#fff; padding:10px 12px; margin:3px; border-radius:10px; box-shadow:0 0 5px #aaa;
+}
+.total-field{ display:flex; flex-direction:column; margin:8px; min-width:100px; }
+.total-field label{ font-size:14px; font-weight:400; margin-bottom:4px; color:#222; }
+.total-field input{
+  font-size:18px; padding:6px 10px; border:1px solid #999; border-radius:5px; text-align:right; background:#f8f8f8;
+}
+.total-highlight input{ background:#ffecec; color:#d10000; font-weight:700; }
+.change-highlight input{ background:#eaffea; color:#117a00; font-weight:700; }
+
+/* legacy fixed totals (kept for compatibility, matches above) */
+.totals-section{
+  margin-top:10px; padding:10px 20px; background:#f1e7e7; border:2px solid #ccc; border-radius:10px;
+  display:flex; justify-content:space-between; gap:20px; font-size:16px;
+}
+.totals-group{ display:flex; flex-direction:column; gap:8px; min-width:240px; }
+.totals-row input,.totals-value{
+  height:28px; font-size:16px; padding:4px 6px; text-align:right; border:1px solid #bbb; border-radius:16px;
+}
+.total-row input{ background:#fff4f4; color:#d10000; font-weight:700; }
+.change-row input{ background:#f0fff0; color:#117a00; font-weight:700; }
+
+/* =============================== */
+/* FUNCTION KEYS                   */
+/* =============================== */
+.function-keys{
+  display:grid; grid-template-columns:repeat(5,1fr);
+  gap:11px; padding:10px 20px 20px; margin-top:18px; background:transparent;
+}
+.function-keys button{
+  padding:15px; font-size:16px; background:#c8f1f1; color:#1c1b1b;
+  border:1px solid #cfd6e0; border-radius:10px; cursor:pointer;
+}
+.function-keys .green{ background:#aebcf3; }
+.function-keys button:hover{ filter:brightness(.96); }
+
+/* =============================== */
+/* RIGHT PANEL                     */
+/* =============================== */
+.pos-right{
+  flex:1.4; background:#eef1f7; padding:10px; display:flex; flex-direction:column; justify-content:space-between; border-radius:12px; box-shadow:0 1px 4px rgba(0,0,0,.08);
+}
+.quick-fields{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.quick-fields button{
+  width:100%; padding:20px; font-size:18px; background:#150252; color:#fff; border:1.5px solid #d4dec7; border-radius:12px; cursor:pointer;
+}
+.clear-button{
+  width:100% !important; padding:25px; font-size:20px; background:#df3a1d !important; color:#fff; font-weight:700; border:0; border-radius:12px; margin-top:10px; box-shadow:0 2px 5px rgba(0,0,0,.15); cursor:pointer;
 }
 
-.pos-meta span {
-  margin-right: 10px;
+/* =============================== */
+/* CALCULATOR                      */
+/* =============================== */
+.calculator{ background:#e6f0ff; padding:20px; border-radius:15px; width:100%; max-width:600px; }
+.calc-display{ width:100%; padding:10px; font-size:32px; margin-bottom:10px; border-radius:4px; border:1.5px solid #1c1596; text-align:right; background:#fff; }
+.calc-body{ display:flex; }
+.calc-buttons{ display:grid; grid-template-columns:repeat(3,1fr); gap:8px; flex:3; }
+.calc-buttons button{
+  border:0; border-radius:50%; height:52px; width:45px; background:#9c51e3; font-size:25px; cursor:pointer; box-shadow:0 2px 5px rgba(37,86,94,.2);
 }
-
-.pos-controls svg {
-  margin-left: 12px;
+.enter-button{
+  flex:1; background:#ad4a08; color:#ede4e4; border:0; border-radius:15px; margin-left:15px; font-weight:700; font-size:25px; padding:10px 5px; cursor:pointer;
+}
+/* Make icon buttons reliable and the image visible */
+.icon-btn {
+  border: 0;
+  background: transparent;
+  padding: 6px;
+  display: inline-grid;
+  place-items: center;
   cursor: pointer;
 }
-
-.pos-main {
-  display: flex;
-  flex: 1;
-  margin-top: 10px;
-}
-
-.pos-left {
-  flex: 3;
-  padding: 10px;
-}
-
-.barcode-input {
-  width: 80%;
-  padding: 10px;
-  margin-bottom: 10px;
-  font-size: 16px;
-}
-
-.item-table-header {
-  display: grid;
-  grid-template-columns: repeat(9, 1fr);
-  background: #a4a4b9;
-  padding: 8px;
-  font-weight: bold;
-  font-size: 14px;
-}
-
-.item-list {
-  height: 310px;
-  background: white;
-  overflow-y: auto;
-  margin-top: 10px;
-}
-
-.totals-section {
-  margin-top: 10px;
-  padding: 10px;
-  background-color: #f9f9f9;
-}
-
-.totals-row {
-  display: flex;
-  align-items: center;
-  margin-bottom: 8px;
-}
-
-.totals-label {
-  width: 80px;
-  font-weight: bold;
-}
-
-.totals-value {
-  width: 100px;
-  margin-right: 20px;
-}
-
-
-
-.totals-row input {
-  width: 100px;
-  margin-right: 20px;
-  padding: 4px 6px;
-}
-.totals-section div {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;  /* Align vertically */
-  margin-bottom: 7px;  /* Increase space between rows */
-}
-
-.totals-section input {
-  width: 90px;         /* Wider input */
-  padding: 25 px;        /* Bigger input height */
-  font-size: 18px;      /* Larger text */
-}
-
-
-.highlight-total {
-  color: red;
-  font-weight: bold;
-}
-.function-keys {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 10px;
-  padding: 20px ;
-}
-
-.function-keys button {
-  padding: 20px;
-  font-size: 18px;
-  background-color: #360bac;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-.function-keys .green {
-  background-color: green;
-}
-
-.function-keys button:hover {
-  background-color: #ece5e5;
-}
-
-.pos-right {
-  flex: 1.4;
-  background: #dcddec;
-  padding: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.quick-fields button {
-  width: 50%;
-  padding: 20px;
-  margin-bottom: 5px;
-  font-size: 18px;
-  background-color: #1008ae;
-  color: white;
-  border: 1.5px solid #d4dec7;
-  cursor: pointer;
-}
-
-.clear-button {
+.icon-btn .icon-img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
   display: block;
-  width: 100% !important;
-  padding: 25px;
-  font-size: 20px;
-  background: #df3a1d !important;
-  color: white;
-  font-weight: bold;
-  border: none;
-  border-radius: 12px;
-  margin-top: 10px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-  cursor: pointer;
 }
 
 
-.calculator {
-  background-color: #e6f0ff;
-  padding: 30px;
-  border-radius: 15px;
-  width: 90%;
-  max-width: 600px;
+/* =============================== */
+/* TOUCH KEYBOARD                 */
+/* =============================== */
+.keyboard-container{
+  position:fixed; left:0; bottom:0; width:100%; background:#f1f1f1; z-index:9999; padding:10px; box-shadow:0 -2px 8px rgba(0,0,0,.2);
 }
 
-.calc-display {
-  width: 100%;
-  padding: 10px;
-  font-size: 35px;
-  margin-bottom: 10px;
-  border-radius: 4px;
-  border: 1.5px solid #1c1596;
-  text-align: right;
-  background: white;
+/* =============================== */
+/* MINIMIZED MODE                  */
+/* =============================== */
+.minimized .pos-main,
+.minimized .function-keys,
+.minimized .pos-right{ display:none !important; }
+.minimized .pos-header{ opacity:.85; }
+
+/* =============================== */
+/* PRINT (RECEIPT)                 */
+/* =============================== */
+#print-section{ display:none; }
+@media print{
+  @page{ size:80mm auto; margin:0; }
+  body *{ visibility:hidden; }
+  #print-section, #print-section *{ display:block !important; visibility:visible; }
+  #print-section{ position:absolute; top:0; left:0; width:80mm; max-height:100vh; overflow:hidden !important; }
+  .thermal-container{ page-break-inside:avoid; break-inside:avoid; height:auto !important; overflow:hidden !important; }
+  html,body{ margin:0 !important; padding:0 !important; height:100% !important; width:100% !important; overflow:hidden !important; }
+  .no-print{ display:none !important; }
 }
 
-.calc-body {
-  display: flex;
+/* ======================= */
+/* BASE / LAYOUT           */
+/* ======================= */
+.pos-container{
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background:#ebeef0;
+  height:100dvh;
+  padding:10px;
+  display:flex;
+  flex-direction:column;
 }
 
-.calc-buttons {
+.pos-main{ display:flex; flex:1; gap:14px; margin-top:10px; }
+.pos-left{ flex:3; padding:10px; display:flex; flex-direction:column; }
+
+/* ======================= */
+/* HEADER                  */
+/* ======================= */
+.pos-header{
+  height:60px; padding:8px 16px;
+  display:flex; align-items:center;
+  background:#131313; color:#fff;
+}
+.header-left,.header-center,.header-right{ flex:1; display:flex; align-items:center; }
+.header-left{ gap:10px; }
+.header-left img{ width:34px; height:34px; }
+.header-center{ justify-content:center; gap:12px; font-size:14px; font-weight:700; }
+.header-right{ justify-content:flex-end; gap:12px; font-size:18px; }
+.header-right svg{ cursor:pointer; }
+
+.icon-btn{ background:transparent; border:0; padding:0; display:inline-flex; align-items:center; }
+.icon-btn img{ width:18px; height:18px; filter:brightness(0) invert(1); }
+
+/* ======================= */
+/* BARCODE / TABLE         */
+/* ======================= */
+.barcode-input{ width:80%; padding:10px; font-size:16px; margin-bottom:10px; }
+
+.item-list{
+  height:220px; overflow-y:auto; background:#fff;
+  margin:10px 0 16px; border:1px solid #ccc; border-radius:6px;
+}
+.item-table-header,.item-row{
+  display:grid; align-items:center; text-align:center;
+  grid-template-columns:42px 1fr 60px 60px 70px 60px 90px 90px;
+  padding:6px 4px; font-size:15px; border-bottom:1px solid #d9e9ee;
+}
+.item-table-header{ background:#e9ecef; font-weight:700; border-bottom:2px solid #c9ced6; }
+.item-row:nth-child(even){ background:#f7f9fb; }
+.item-row span{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.item-row.selected{ background:#fff5cc; border:1px solid #f3c44c; }
+
+/* ======================= */
+/* TOTALS                  */
+/* ======================= */
+.totals-bar{
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between;
+  background:#fff; padding:8px 10px; margin:3px; border-radius:10px; box-shadow:0 0 5px #aaa;
+}
+.total-field{ display:flex; flex-direction:column; margin:6px; min-width:95px; }
+.total-field label{ font-size:13px; margin-bottom:4px; color:#222; }
+.total-field input{ font-size:16px; padding:6px 8px; border:1px solid #999; border-radius:6px; text-align:right; background:#f8f8f8; }
+.total-highlight input{ background:#ffecec; color:#d10000; font-weight:700; }
+.change-highlight input{ background:#eaffea; color:#117a00; font-weight:700; }
+
+/* ======================= */
+/* FUNCTION KEYS           */
+/* ======================= */
+.function-keys{
+  display:grid; grid-template-columns:repeat(5,1fr);
+  gap:10px; padding:10px 14px 16px; margin-top:16px;
+}
+.function-keys button{
+  padding:12px; font-size:15px; border-radius:10px;
+  border:1px solid #cfd6e0; background:#c8f1f1; color:#1c1b1b; cursor:pointer;
+}
+.function-keys .green{ background:#aebcf3; }
+.function-keys button:hover{ filter:brightness(.96); }
+
+/* ======================= */
+/* RIGHT PANEL             */
+/* ======================= */
+.pos-right{
+  flex:1.4; min-width:340px;
+  background:#eef1f7; padding:10px; border-radius:12px;
+  box-shadow:0 1px 4px rgba(0,0,0,.08);
+  display:grid;
+  grid-template-rows: auto auto 1fr auto; /* quick buttons, Clear, search, gallery/calculator */
+  gap:10px;
+}
+
+/* quick buttons row */
+.quick-fields{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.quick-fields button{
+  width:100%; padding:16px; font-size:16px; border-radius:10px;
+  background:#140e48; color:#fff; border:1px solid #d4dec7; cursor:pointer;
+}
+
+/* clear button */
+.clear-button{
+  width:100%; padding:16px; font-size:18px; font-weight:700;
+  border:0; border-radius:10px; background:#df3a1d; color:#fff;
+}
+
+/* search bar above gallery (optional) */
+.right-search{ height:36px; padding:0 10px; border:1px solid #cdd5df; border-radius:9px; background:#fff; font-size:14px; }
+
+/* ======================= */
+/* DIRECT SALE GALLERY     */
+/* (one boxed grid, small images, scroll) */
+/* ======================= */
+.direct-sale-gallery{
+  background:#fff; border:1px solid #ccc; border-radius:12px;
+  padding:10px; overflow:auto; box-shadow:0 2px 6px rgba(0,0,0,.08);
+}
+.direct-sale-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);   /* 3 per row; change to 4 if you prefer */
+  gap:10px;
+}
+.direct-card{
+  background:#f9f9f9; border:1px solid #e3e8f1; border-radius:10px;
+  padding:8px; display:flex; flex-direction:column; align-items:center;
+  cursor:pointer; transition:transform .15s ease, box-shadow .15s ease;
+}
+.direct-card:hover{ transform:scale(1.03); box-shadow:0 2px 6px rgba(0,0,0,.08); }
+.direct-card img{
+  width:64px; height:64px; object-fit:contain; margin-bottom:6px; background:#fff; border-radius:6px;
+}
+.direct-card .title{ font-size:12px; font-weight:600; color:#333; text-align:center; line-height:1.2; }
+
+/* thin, neat scrollbar for the gallery */
+.direct-sale-gallery::-webkit-scrollbar{ width:8px; height:8px; }
+.direct-sale-gallery::-webkit-scrollbar-thumb{ background:#c7ceda; border-radius:8px; }
+.direct-sale-gallery{ scrollbar-width:thin; scrollbar-color:#c7ceda transparent; }
+
+/* ======================= */
+/* CALCULATOR (compact)    */
+/* ======================= */
+.calculator{ background:#e6f0ff; padding:16px; border-radius:12px; width:100%; }
+.calc-display{ width:100%; padding:8px; font-size:26px; border:1.5px solid #1c1596; border-radius:4px; text-align:right; background:#fff; margin-bottom:8px; }
+.calc-body{ display:flex; }
+.calc-buttons{ display:grid; grid-template-columns:repeat(3,1fr); gap:8px; flex:3; }
+.calc-buttons button{ width:44px; height:44px; border-radius:50%; border:0; background:#9c51e3; font-size:20px; color:#fff; cursor:pointer; }
+.enter-button{ flex:1; margin-left:10px; padding:8px 6px; border:0; border-radius:12px; background:#ad4a08; color:#fff; font-size:20px; font-weight:700; }
+
+/* ======================= */
+/* PRINT (receipt)         */
+/* ======================= */
+#print-section{ display:none; }
+@media print{
+  @page{ size:80mm auto; margin:0; }
+  body *{ visibility:hidden; }
+  #print-section, #print-section *{ visibility:visible; display:block !important; }
+  #print-section{ position:absolute; top:0; left:0; width:80mm; max-height:100vh; overflow:hidden !important; }
+  .thermal-container{ page-break-inside:avoid; break-inside:avoid; }
+}
+
+/* ======================= */
+/* MINIMIZED MODE          */
+/* ======================= */
+.minimized .pos-main,
+.minimized .function-keys,
+.minimized .pos-right{ display:none !important; }
+.minimized .pos-header{ opacity:.85; }
+
+/* =======================================
+   POS — Clean layout for 1256×1024
+   ======================================= */
+
+/* -------- Base / Layout -------- */
+.pos-container{
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background:#ebeef0;
+  height:100dvh;
+  padding:10px;
+  display:flex;
+  flex-direction:column;
+}
+
+.pos-main{
+  display:flex; gap:14px; flex:1; margin-top:10px;
+  align-items:stretch;
+}
+
+.pos-left{
+  flex:3; padding:10px;
+  display:flex; flex-direction:column;
+}
+
+/* -------- Header -------- */
+.pos-header{
+  height:60px; padding:8px 16px;
+  display:flex; align-items:center;
+  background:#131313; color:#fff; border-radius:8px;
+}
+.header-left,.header-center,.header-right{ flex:1; display:flex; align-items:center; }
+.header-left{ gap:10px; }
+.header-left img{ width:34px; height:34px; }
+.header-center{ justify-content:center; gap:12px; font-size:14px; font-weight:700; }
+.header-right{ justify-content:flex-end; gap:12px; font-size:18px; }
+.header-right svg{ cursor:pointer; }
+
+.icon-btn{ background:transparent; border:0; padding:0; display:inline-flex; align-items:center; }
+.icon-btn img{ width:18px; height:18px; filter:brightness(0) invert(1); }
+
+/* -------- Barcode / Items table -------- */
+.barcode-input{
+  width:80%; padding:10px; font-size:16px; margin-bottom:10px;
+  border:1px solid #cfd6e0; border-radius:8px; background:#fff;
+}
+
+.item-list{
+  height:220px; overflow-y:auto; background:#fff;
+  margin:10px 0 16px; border:1px solid #ccc; border-radius:8px;
+}
+.item-table-header,.item-row{
+  display:grid; align-items:center; text-align:center;
+  grid-template-columns:42px 1fr 60px 60px 70px 60px 90px 90px;
+  padding:6px 4px; font-size:15px; border-bottom:1px solid #d9e9ee;
+}
+.item-table-header{ background:#e9ecef; font-weight:700; border-bottom:2px solid #c9ced6; }
+.item-row:nth-child(even){ background:#f7f9fb; }
+.item-row span{ overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.item-row.selected{ background:#fff5cc; border:1px solid #f3c44c; }
+
+/* -------- Totals bar -------- */
+.totals-bar{
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between;
+  background:#fff; padding:8px 10px; margin:3px; border-radius:10px; box-shadow:0 0 5px #aaa;
+}
+.total-field{ display:flex; flex-direction:column; margin:6px; min-width:95px; }
+.total-field label{ font-size:13px; margin-bottom:4px; color:#222; }
+.total-field input{
+  font-size:16px; padding:6px 8px; border:1px solid #999; border-radius:6px;
+  text-align:right; background:#f8f8f8;
+}
+.total-highlight input{ background:#ffecec; color:#d10000; font-weight:700; }
+.change-highlight input{ background:#eaffea; color:#117a00; font-weight:700; }
+
+/* -------- Function keys -------- */
+.function-keys{
+  display:grid; grid-template-columns:repeat(5,1fr);
+  gap:10px; padding:10px 14px 16px; margin-top:16px;
+}
+.function-keys button{
+  padding:12px; font-size:15px; border-radius:10px; cursor:pointer;
+  border:1px solid #cfd6e0; background:#c8f1f1; color:#1c1b1b;
+}
+.function-keys .green{ background:#aebcf3; }
+.function-keys button:hover{ filter:brightness(.96); }
+
+/* =======================================
+   RIGHT PANEL — full-height quick box
+   ======================================= */
+.pos-right{
+  flex:1.4; min-width:360px;
+  background:#eef1f7; padding:10px; border-radius:12px;
+  box-shadow:0 1px 4px rgba(0,0,0,.08);
+  display:grid; gap:10px;
+  /* rows: quick buttons, Clear, search, scroller */
+  grid-template-rows: auto auto auto 1fr;
+}
+
+/* quick buttons row */
+.quick-fields{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.quick-fields button{
+  width:100%; padding:16px; font-size:16px; border-radius:10px; cursor:pointer;
+  background:#140e48; color:#fff; border:1px solid #d4dec7;
+}
+
+/* red clear button */
+.clear-button{
+  width:100%; padding:16px; font-size:18px; font-weight:700; cursor:pointer;
+  border:0; border-radius:10px; background:#df3a1d; color:#fff;
+}
+
+/* search above gallery */
+.quick-search{
+  height:38px; padding:0 12px; border:1px solid #cdd5df; border-radius:9px;
+  background:#fff; font-size:14px; outline:none;
+}
+
+/* ---------- Full-height scroller with right stick buttons ---------- */
+.right-panel-scroller{
+  display:grid; grid-template-columns: 1fr 42px; gap:8px;
+  height:100%; min-height:0; /* allow child to shrink inside grid */
+}
+
+.quick-tiles{
+  min-width:0; height:100%;
+  overflow-y:auto; background:#fff; border:1px solid #cfd6e0; border-radius:12px; padding:10px;
+  display:grid; gap:10px;
+  /* **2 columns for narrow right panel; auto upgrades to 3 when wide** */
+  grid-template-columns: repeat(2, minmax(0,1fr));
+}
+@media (min-width: 390px){
+  .quick-tiles{ grid-template-columns: repeat(3, minmax(0,1fr)); }
+}
+
+.quick-tile{
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:6px; padding:8px; cursor:pointer; border-radius:10px;
+  background:#f9fbff; border:1px solid #e3e8f1;
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.quick-tile:hover{ transform:scale(1.03); box-shadow:0 2px 6px rgba(0,0,0,.08); }
+
+.quick-tile-img{
+  width:64px; height:64px; object-fit:contain; background:#fff; border-radius:6px;
+}
+.tile-label{
+  font-size:12px; font-weight:600; color:#333; text-align:center; line-height:1.2;
+  width:100%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+}
+
+/* sticky scroll buttons */
+.scroll-stick{
+  display:flex; flex-direction:column; gap:8px;
+  position:sticky; top:10px; align-self:start;
+}
+.scrollbar-btn{
+  width:38px; height:38px; border:1px solid #c7ceda; border-radius:9px;
+  background:#fff; cursor:pointer; font-weight:700;
+}
+
+/* slim native scrollbar */
+.quick-tiles::-webkit-scrollbar{ width:8px; }
+.quick-tiles::-webkit-scrollbar-thumb{ background:#c7ceda; border-radius:8px; }
+.quick-tiles{ scrollbar-width:thin; scrollbar-color:#c7ceda transparent; }
+
+/* -------- Print -------- */
+#print-section{ display:none; }
+@media print{
+  @page{ size:80mm auto; margin:0; }
+  body *{ visibility:hidden; }
+  #print-section, #print-section *{ visibility:visible; display:block !important; }
+  #print-section{ position:absolute; top:0; left:0; width:80mm; max-height:100vh; overflow:hidden !important; }
+  .thermal-container{ page-break-inside:avoid; break-inside:avoid; }
+}
+
+/* -------- Minimized -------- */
+.minimized .pos-main,
+.minimized .function-keys,
+.minimized .pos-right{ display:none !important; }
+.minimized .pos-header{ opacity:.85; }
+
+/* layout safety so grids can shrink and scroll correctly */
+* { box-sizing: border-box; }
+.pos-main,
+.pos-left,
+.pos-right,
+.right-panel-scroller,
+.quick-tiles { min-height: 0; }
+
+/* Right panel: full height within the screen */
+.pos-right{
+  /* keep your existing styles; add the next 2 lines */
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  flex: 3;
+  grid-template-rows: auto auto auto 1fr; /* buttons, Clear, search, gallery */
+  height: calc(100dvh - 80px); /* header height + outer paddings approx */
 }
 
-.calc-buttons button {
-  border: none;
-  border-radius: 50%;
-  height: 52px;
-  width: 45px;
-  background-color: rgb(156, 81, 227);
-  font-size: 25px;
-  cursor: pointer;
-  box-shadow: 0 2px 5px rgba(37, 86, 94, 0.2);
+/* Right scroller: two columns (gallery + arrow column) */
+.right-panel-scroller{
+  display:grid;
+  grid-template-columns: 1fr 42px;
+  gap:8px;
+  height:100%;
 }
 
-.enter-button {
-  flex: 1;
-  background-color: #ad4a08;
-  color: rgb(237, 228, 228);
-  border: none;
-  border-radius: 15px;
-  margin-left: 15px;
-  font-weight: bold;
-  font-size: 25px;
-  padding: 10px 5px;
-  cursor: pointer;
+/* Gallery box fills the available column */
+.quick-tiles{
+  height:100%;
+  overflow-y:auto;
+  background:#fff;
+  border:1px solid #cfd6e0;
+  border-radius:12px;
+  padding:10px;
+
+  display:grid; gap:10px;
+  grid-template-columns: repeat(2, minmax(0,1fr)); /* 2 cols on narrow */
 }
-.keyboard-container {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: #f1f1f1;
-  z-index: 9999;
-  padding: 10px;
-  box-shadow: 0 -2px 8px rgba(0,0,0,0.2);
+@media (min-width: 390px){
+  .quick-tiles{ grid-template-columns: repeat(3, minmax(0,1fr)); } /* 3 cols when wider */
 }
+
+/* Product tiles: compact image + label */
+.quick-tile{
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:6px; padding:8px; cursor:pointer;
+  background:#f9fbff; border:1px solid #e3e8f1; border-radius:10px;
+  transition:transform .15s ease, box-shadow .15s ease;
+}
+.quick-tile:hover{ transform:scale(1.03); box-shadow:0 2px 6px rgba(0,0,0,.08); }
+
+.quick-tile-img{ width:64px; height:64px; object-fit:contain; background:#fff; border-radius:6px; }
+.tile-label{ font-size:12px; font-weight:600; color:#333; text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+
+/* Sticky scroll buttons on the right */
+.scroll-stick{ position:sticky; top:10px; align-self:start; display:flex; flex-direction:column; gap:8px; }
+.scrollbar-btn{
+  width:38px; height:38px; border:1px solid #c7ceda; border-radius:9px; background:#fff; cursor:pointer; font-weight:700;
+}
+
+/* Slim scrollbar */
+.quick-tiles::-webkit-scrollbar{ width:8px; }
+.quick-tiles::-webkit-scrollbar-thumb{ background:#c7ceda; border-radius:8px; }
+.quick-tiles{ scrollbar-width:thin; scrollbar-color:#c7ceda transparent; }
+
+
+/* Right panel two-column area: tiles + sticky arrows */
+.right-panel-scroller { display:grid; grid-template-columns: 1fr auto; gap:8px; height:100%; }
+.quick-tiles{ overflow-y:auto; background:#fff; border:1px solid #cfd6e0; border-radius:12px; padding:10px; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; }
+.scroll-stick{ display:flex; flex-direction:column; gap:6px; }
+.scrollbar-btn{ width:34px; height:34px; border:1px solid #c7ceda; border-radius:8px; background:#fff; cursor:pointer; }
+
+
+/* in Pos.css */
+.pos-header .header-right { display: flex; align-items: center; gap: 10px; }
+
+.icon-round{
+  width:28px;height:28px;border-radius:50%;
+  background:#fff;border:none;padding:0;
+  display:inline-flex;align-items:center;justify-content:center;
+  cursor:pointer;
+}
+.icon-round svg{ color:#111; }
+.icon-round:hover{ box-shadow: inset 0 0 0 2px rgba(0,0,0,.05); }
+.icon-round:focus{ outline:2px solid rgba(255,255,255,.45); outline-offset:2px; }

@@ -1,0 +1,259 @@
+/* =============== BASE (80mm) =============== */
+.tp-root {
+  --gap: 6px;
+  --c-no: 8mm;
+  --c-qty: 12mm;
+  --c-rate: 16mm;
+  --c-total: 18mm;
+
+  font-family: "Courier New", ui-monospace, monospace;
+  font-size: 12px;
+  color: #111;
+  width: 78mm;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.tp-root * {
+  box-sizing: border-box;
+}
+
+/* =============== HEADER =============== */
+.tp-header {
+  text-align: center;
+  line-height: 1.35;
+}
+
+.tp-title {
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.tp-sub {
+  opacity: 0.9;
+}
+
+.tp-meta {
+  margin-top: 6px;
+  border-top: 1px solid #000;
+  padding-top: 4px;
+  text-align: left;
+}
+
+/* =============== GRID (No | Item | Qty | Rate | Total) =============== */
+.tp-grid5 {
+  display: grid;
+  grid-template-columns:
+    var(--c-no)
+    minmax(0, 1fr)
+    var(--c-qty)
+    var(--c-rate)
+    var(--c-total);
+  column-gap: var(--gap);
+  align-items: baseline;
+}
+
+/* Header row */
+.tp-head {
+  margin-top: 6px;
+  padding: 4px 0 3px;
+  font-weight: 700;
+  border-bottom: 1px solid #000;
+  white-space: nowrap;
+}
+
+/* Lines / rows */
+.tp-row {
+  padding: 4px 0;
+}
+
+.tp-lines .tp-row + .tp-row {
+  margin-top: 2px;
+}
+
+/* Item cell (EN / AR / barcode) */
+.tp-itemcell {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.tp-itemcell .en,
+.tp-itemcell .ar {
+  font-weight: 600;
+}
+
+.bc {
+  font-size: 11px;
+  opacity: 0.85;
+}
+
+/* Text helpers */
+.tp-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.a-r {
+  text-align: right;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Rule line */
+.tp-rule {
+  border-top: 2px solid #000;
+  margin: 8px 0;
+}
+
+/* =============== TOTALS =============== */
+.tp-totals {
+  display: grid;
+  row-gap: 4px;
+  margin-top: 6px;
+}
+
+.tp-total-row {
+  display: grid;
+  grid-template-columns: 1fr 28mm;
+}
+
+.tp-total-row span:last-child {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.tp-grand {
+  font-weight: 800;
+  border-top: 1px solid #000;
+  padding-top: 4px;
+}
+
+.tp-strong {
+  font-weight: 700;
+}
+
+/* =============== BARCODE =============== */
+.tp-barcode {
+  text-align: center;
+  margin-top: 8px;
+}
+
+.tp-barcode img {
+  height: 40px;
+  display: block;
+  margin: 0 auto;
+}
+
+.tp-barcode-text {
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+/* =============== E-INVOICE QR =============== */
+.tp-qr {
+  margin-top: 8px;
+  text-align: center;
+}
+
+.tp-qr img {
+  width: 60px;   /* small QR for thermal */
+  height: 60px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* =============== FOOTER =============== */
+.tp-footer {
+  text-align: center;
+  margin-top: 6px;
+  font-weight: 700;
+}
+
+.tp-footer .en {
+  margin-bottom: 2px;
+}
+
+/* =============== PRINT ONLY =============== */
+@media print {
+  @page {
+    size: 80mm auto;
+    margin: 0;
+  }
+
+  html,
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body * {
+    visibility: hidden !important;
+  }
+
+  #print-section,
+  #print-section * {
+    visibility: visible !important;
+  }
+
+  #print-section {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto !important;
+  }
+
+  /* Lock grid widths for printer */
+  #print-section .tp-grid5,
+  #print-section .tp-head,
+  #print-section .tp-row {
+    display: grid !important;
+    grid-template-columns:
+      var(--c-no)
+      minmax(0, 1fr)
+      calc(var(--c-qty) + 1mm)
+      calc(var(--c-rate) + 2mm)
+      calc(var(--c-total) + 2mm) !important;
+    column-gap: var(--gap, 6px) !important;
+  }
+
+  .tp-root,
+  .tp-head,
+  .tp-row,
+  .tp-totals,
+  .tp-barcode,
+  .tp-qr,
+  .tp-footer {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
+
+/* Same grid layout on screen for header + rows */
+.tp-head,
+.tp-row {
+  display: grid !important;
+  grid-template-columns:
+    var(--c-no)
+    minmax(0, 1fr)
+    var(--c-qty)
+    var(--c-rate)
+    var(--c-total) !important;
+  column-gap: var(--gap, 6px) !important;
+}
+
+.tp-qr {
+  margin-top: 8px;
+  text-align: center;
+}
+
+.tp-qr img {
+  width: 70px;   /* or 60px if you changed */
+  height: 70px;
+  display: block;
+  margin: 0 auto;
+}

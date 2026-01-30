@@ -1,0 +1,145 @@
+/* ==== DirectSalePanel — clean CSS ======================================== */
+:root{
+  --ds-bg:        #e9ebf5;
+  --ds-border:    #c7cadb;
+  --ds-border-2:  #cfd3e0;
+  --ds-text:      #1a1d2b;
+  --ds-text-sub:  #4a4f63;
+  --ds-accent:    #0a0830;
+  --ds-danger:    #d63c22;
+  --ds-card:      #ffffff;
+  --ds-thumb:     #f6f7fb;
+  --ds-price:     #0c6a2d;
+  --ds-radius-lg: 12px;
+  --ds-radius-md: 10px;
+  --ds-gap:       10px;
+}
+
+/* Container pinned at right like your screenshot */
+.ds-panel{
+  position: sticky;
+  top: 0;
+  height: calc(100dvh - 80px);
+  width: 360px;                /* tweak to fit your layout */
+  min-width: 320px;
+  padding: 10px 12px 12px;
+  background: var(--ds-bg);
+  border-left: 6px solid var(--ds-border);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-gap);
+  overflow: hidden;
+}
+
+/* Top buttons */
+.ds-topbar{ display:flex; gap: var(--ds-gap); }
+.ds-topbtn{
+  flex: 1;
+  padding: 12px 10px;
+  border: none;
+  border-radius: var(--ds-radius-md);
+  background: var(--ds-accent);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+.ds-topbtn:focus-visible{ outline: 2px solid #fff; outline-offset: 2px; }
+
+/* Search */
+.ds-search input{
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--ds-border-2);
+  border-radius: var(--ds-radius-md);
+  background: #fff;
+  outline: none;
+}
+.ds-search input:focus{ box-shadow: 0 0 0 3px rgba(10,8,48,.15); }
+
+/* Clear */
+.ds-clear{
+  padding: 14px 10px;
+  border: none;
+  border-radius: var(--ds-radius-lg);
+  background: var(--ds-danger);
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.ds-clear:focus-visible{ outline: 2px solid #fff; outline-offset: 2px; }
+
+/* Grid of image tiles */
+.ds-grid{
+  flex: 1;
+  overflow: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--ds-gap);
+  padding-right: 2px; /* keep scrollbar off the cards a bit */
+}
+@media (max-width: 1280px){
+  .ds-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+
+.ds-card{
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  border: 1px solid #dfe3f0;
+  border-radius: var(--ds-radius-lg);
+  background: var(--ds-card);
+  text-align: left;
+  cursor: pointer;
+  transition: transform .06s ease, box-shadow .06s ease;
+}
+.ds-card:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,.08);
+}
+.ds-card:focus-visible{ outline: 2px solid var(--ds-accent); outline-offset: 2px; }
+
+.ds-thumb{
+  height: 82px;
+  margin-bottom: 6px;
+  border-radius: var(--ds-radius-md);
+  background: var(--ds-thumb);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.ds-thumb img{ width: 100%; height: 100%; object-fit: cover; }
+.ds-placeholder{ font-size: 34px; opacity: .75; }
+
+.ds-name{
+  min-height: 30px;
+  line-height: 1.2;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--ds-text);
+}
+.ds-name .ds-ar{ margin-top: 2px; font-size: 11px; font-weight: 500; color: var(--ds-text-sub); }
+
+.ds-price{
+  margin-top: 4px;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--ds-price);
+}
+
+/* Empty state */
+.ds-empty{
+  grid-column: 1 / -1;
+  padding: 16px;
+  text-align: center;
+  color: #5b6075;
+  background: #fff;
+  border: 1px dashed var(--ds-border-2);
+  border-radius: var(--ds-radius-md);
+}
+.ds-hint{ margin-top: 4px; font-size: 12px; color: #7a7f93; }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .ds-card{ transition: none; }
+}

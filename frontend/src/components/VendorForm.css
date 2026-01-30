@@ -1,0 +1,179 @@
+/* ========= THEME ========= */
+:root{
+  --brand:#a50063;
+  --brand-dark:#7a004a;
+  --border:#e3e6ea;
+  --card-bg:#fff;
+  --text:#333;
+}
+
+/* ========= PAGE CARD ========= */
+.vendor-form-page{
+  max-width: 920px;
+  margin: 24px auto;
+  padding: 16px;
+  background: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.08);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+}
+
+/* ========= HEADER ========= */
+.vendor-form-header{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:10px;
+  padding: 6px 4px 12px;
+}
+
+.header-title{
+  text-align:center;
+  color: var(--brand);
+  font-weight:800;
+  font-size:1.6rem;
+  margin:0;
+}
+
+/* Flat home icon (no circle, no shadow) */
+.home-button{
+  border:none;
+  background:transparent;
+  font-size:22px;
+  line-height:1;
+  cursor:pointer;
+  padding:0 2px;
+}
+.home-button:hover{ opacity:.85; }
+
+/* Circular close button on the right */
+.close-button{
+  width:36px;height:36px;
+  display:inline-flex;align-items:center;justify-content:center;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:#fff;
+  font-size:18px;line-height:1;font-weight:700;
+  cursor:pointer;
+  box-shadow:0 2px 6px rgba(0,0,0,.12);
+}
+.close-button:hover{ background:#f4f4f4; }
+
+/* ========= TABS ========= */
+.vendor-tabs{
+  display:flex; gap:10px; margin: 4px 0 14px;
+  flex-wrap:wrap;
+}
+.vendor-tabs button{
+  padding:10px 14px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:#fff;
+  color:#444;
+  font-weight:600;
+  cursor:pointer;
+}
+.vendor-tabs button.active{
+  background:var(--brand);
+  border-color:var(--brand);
+  color:#fff;
+  box-shadow:0 5px 15px rgba(165,0,99,.25);
+}
+.vendor-tabs button:not(.active):hover{
+  border-color:var(--brand);
+  color:var(--brand);
+}
+
+/* ========= FORM / FIELDS ========= */
+.vendor-form{ display:block; }
+.tab-content{ display:grid; gap:10px; }
+.two-col{ grid-template-columns:1fr 1fr; }
+
+.tab-content label{
+  font-weight:600; color:#444; margin-bottom:4px;
+}
+.tab-content input,
+.tab-content select,
+.tab-content textarea{
+  width:100%;
+  padding:10px 12px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  font-size:15px;
+  outline-offset:2px;
+  background:#fff;
+}
+.tab-content input:focus,
+.tab-content select:focus,
+.tab-content textarea:focus{ border-color:var(--brand); }
+
+.inline{ display:flex; align-items:center; gap:8px; }
+.full{ grid-column:1 / -1; }
+.hint{ color:#666; font-size:13px; }
+
+/* ========= CONTACTS LIST ========= */
+.contact-row{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr 1fr auto auto;
+  gap:8px; margin-bottom:8px;
+}
+.contact-row input{
+  padding:10px 12px; border:1px solid var(--border); border-radius:10px;
+}
+.primary-box{ display:flex; align-items:center; gap:6px; }
+
+.btn-del{
+  border:1px solid #ffe1e1;
+  background:#fff5f5;
+  color:#b42318;
+  padding:6px 10px;
+  border-radius:10px;
+  cursor:pointer;
+}
+.btn-del:hover{ background:#ffe9e9; }
+
+.contact-actions{ margin-top:6px; }
+.btn-add{
+  padding:8px 12px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:#fff;
+  cursor:pointer;
+}
+.btn-add:hover{ background:#f7f7f9; }
+
+/* ========= FOOTER / WIZARD BUTTONS ========= */
+.form-buttons.wizard{
+  display:flex; align-items:center; gap:10px; padding-top:10px;
+}
+.spacer{ flex:1; }
+
+.btn-secondary,
+.btn-next,
+.btn-save{
+  padding:10px 16px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:#fff;
+  cursor:pointer;
+  font-weight:700;
+}
+.btn-secondary:hover{ background:#f7f7f9; }
+
+.btn-next{
+  background:#0ea5a3; color:#fff; border:0;
+}
+.btn-next:hover{ filter:brightness(.95); }
+
+.btn-save{
+  background:#2e7d32; color:#fff; border:0;
+}
+.btn-save:hover{ filter:brightness(.95); }
+
+/* ========= RESPONSIVE ========= */
+@media (max-width: 720px){
+  .vendor-form-page{ margin:12px; padding:12px; }
+  .two-col{ grid-template-columns:1fr; }
+  .contact-row{ grid-template-columns:1fr 1fr; }
+  .header-title{ font-size:1.35rem; }
+}

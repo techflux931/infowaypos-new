@@ -1,0 +1,267 @@
+:root{
+  --violet:#6a0dad;
+  --violet-dark:#580a9e;
+  --violet-hover:#4b078a;
+
+  --red:#d9534f;
+  --red-dark:#b52b27;
+
+  --green:#28a745;
+  --green-dark:#218838;
+
+  --border:#ddd;
+  --bg:#fff;
+
+  --thead-bg:#f3e6ff;
+  --thead-color:#6a0dad;
+
+  --stripe:#fafafa;
+  --hover:#f1f1f1;
+  --text:#111;
+}
+
+/* Container and font */
+.recurring-invoices-container{
+  padding:20px;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+  color:var(--text);
+  background:var(--bg);
+}
+
+/* Header */
+.recurring-header{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:10px;
+}
+
+.icon-btn{
+  background:none;
+  border:none;
+  cursor:pointer;
+  padding:6px;
+  font-size:22px;
+  border-radius:8px;
+  transition:color .2s ease, background-color .2s ease;
+}
+.icon-btn:focus-visible,
+.recurring-invoices-table button:focus-visible,
+.add-new-btn:focus-visible{
+  outline:2px solid var(--violet);
+  outline-offset:2px;
+}
+.home-btn{ color:var(--violet); }
+.home-btn:hover{ color:var(--violet-hover); }
+.close-btn{ color:var(--red); }
+.close-btn:hover{ color:var(--red-dark); }
+
+h2{
+  flex:1 1 auto;
+  text-align:center;
+  margin:0;
+  font-weight:700;
+  min-width:180px;
+}
+
+/* Primary action */
+.add-new-btn{
+  background-color:var(--green);
+  color:#fff;
+  padding:8px 16px;
+  border:none;
+  border-radius:6px;
+  font-weight:700;
+  margin-bottom:15px;
+  cursor:pointer;
+  transition:background-color .2s ease, transform .02s ease-in;
+}
+.add-new-btn:hover{ background-color:var(--green-dark); }
+.add-new-btn:active{ transform:translateY(1px); }
+
+/* Table wrapper */
+.table-wrap{
+  width:100%;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  border:1px solid var(--border);
+  border-radius:8px;
+  background:#fff;
+}
+
+/* Table */
+.recurring-invoices-table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:900px;
+}
+.recurring-invoices-table th,
+.recurring-invoices-table td{
+  border-bottom:1px solid var(--border);
+  padding:10px 8px;
+  text-align:left;
+  white-space:nowrap;
+}
+.recurring-invoices-table th{
+  background-color:var(--thead-bg);
+  color:var(--thead-color);
+  position:sticky;
+  top:0;
+  z-index:1;
+}
+.recurring-invoices-table tr:nth-child(even){ background-color:var(--stripe); }
+.recurring-invoices-table tr:hover{ background-color:var(--hover); }
+
+/* Buttons inside table */
+.recurring-invoices-table .btn{
+  margin-right:6px;
+  border:none;
+  padding:6px 12px;
+  cursor:pointer;
+  border-radius:6px;
+  font-weight:600;
+  font-size:13px;
+  transition:background-color .2s ease, transform .02s ease-in;
+}
+.recurring-invoices-table .btn:active{ transform:translateY(1px); }
+
+/* Variants */
+.btn-primary{ background-color:var(--violet); color:#fff; }
+.btn-primary:hover{ background-color:var(--violet-dark); }
+
+.btn-ghost{ background:#f4f2f8; color:var(--violet); }
+.btn-ghost:hover{ background:#eae3f5; }
+
+.btn-danger{ background:var(--red); color:#fff; }
+.btn-danger:hover{ background:var(--red-dark); }
+
+/* Disabled only when actually disabled */
+.recurring-invoices-table .btn:disabled{
+  background:#f0f0f0 !important;
+  color:#aaa !important;
+  cursor:not-allowed;
+  opacity:.7;
+}
+
+/* Status badge */
+.badge{
+  display:inline-block;
+  padding:2px 10px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:700;
+}
+.badge.ACTIVE{ background:#e8f7ee; color:#1e7a3b; }
+.badge.PAUSED{ background:#fff6e6; color:#a86a00; }
+.badge.ENDED{  background:#fde8e7; color:#b02a2a; }
+
+/* Small screens */
+@media (max-width:640px){
+  .add-new-btn{ width:100%; }
+  h2{ font-size:18px; }
+}
+
+/* Form width helper (if you reuse on the edit/create form) */
+.recurring-invoice-form-plain{
+  max-width:980px;
+  margin:0 auto;
+}
+
+
+
+/* ---- Force the Actions column to be fully opaque & clickable ---- */
+.recurring-invoices-table td.actions-cell,
+.recurring-invoices-table td.actions-cell * {
+  opacity: 1 !important;
+  filter: none !important;
+  pointer-events: auto !important;
+}
+
+/* If any global stylesheet dims the last column, neutralize it */
+.recurring-invoices-table td:last-child,
+.recurring-invoices-table th:last-child {
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+/* Keep your color variants unapologetically strong */
+.recurring-invoices-table td.actions-cell .btn-primary {
+  background-color: var(--violet) !important;
+  color: #fff !important;
+}
+.recurring-invoices-table td.actions-cell .btn-primary:hover {
+  background-color: var(--violet-dark) !important;
+}
+
+.recurring-invoices-table td.actions-cell .btn-ghost {
+  background: #f4f2f8 !important;
+  color: var(--violet) !important;
+}
+.recurring-invoices-table td.actions-cell .btn-ghost:hover {
+  background: #eae3f5 !important;
+}
+
+.recurring-invoices-table td.actions-cell .btn-danger {
+  background: var(--red) !important;
+  color: #fff !important;
+}
+.recurring-invoices-table td.actions-cell .btn-danger:hover {
+  background: var(--red-dark) !important;
+}
+
+/* Only soften when actually disabled (e.g., while API is running) */
+.recurring-invoices-table td.actions-cell .btn[disabled] {
+  opacity: .7 !important;
+  cursor: not-allowed !important;
+}
+
+/* --- small toast --- */
+.toast {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 6px 24px rgba(0,0,0,.18);
+  z-index: 9999;
+}
+.toast.err { background: #d9534f; }
+.toast.ok  { background: #2e7d32; }
+
+/* --- lightweight modal for View --- */
+.mini-modal-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.45);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 9998;
+}
+.mini-modal {
+  width: min(900px, 92vw);
+  max-height: 80vh;
+  overflow: auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 12px 36px rgba(0,0,0,.25);
+  padding: 14px;
+}
+.mini-modal-head {
+  display:flex; align-items:center; justify-content:space-between;
+  border-bottom: 1px solid #eee; padding-bottom: 6px; margin-bottom: 10px;
+}
+.view-meta { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 6px 16px; margin-bottom: 10px; }
+@media (max-width: 640px){ .view-meta { grid-template-columns: 1fr; } }
+
+/* minimal modal bits if not present already */
+.mini-modal-backdrop{
+  position:fixed; inset:0; background:rgba(0,0,0,.4);
+  display:flex; align-items:center; justify-content:center; z-index:50;
+}
+.mini-modal{
+  background:#fff; border-radius:12px; padding:14px; width:min(1000px, 92vw);
+  box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+.mini-modal-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; }
+.view-meta{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; margin-bottom:10px; }
+@media (max-width:700px){ .view-meta{ grid-template-columns:1fr; } }

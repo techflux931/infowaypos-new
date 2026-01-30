@@ -1,76 +1,55 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import './Shift.css';
-import { FaPrint, FaSyncAlt } from 'react-icons/fa';
-import ConfirmModal from './PrintModal';
+// src/components/Shift.js
+import React, { useEffect, useCallback, useState } from "react";
+import PropTypes from "prop-types";
+import { FaPrint, FaSyncAlt } from "react-icons/fa";
 
-const Shift = ({ onClose }) => {
-  const [showConfirm, setShowConfirm] = useState(false);
-  const [reportType, setReportType] = useState('Z');
+import XReportConfirmModal from "./XReportConfirmModal";
+import DayClose from "./DayClose";              // Z Report modal (Print / Save)
+import "./Shift.css";
 
-  const handleReportClick = (type) => {
-    setReportType(type);
-    setShowConfirm(true);
-  };
+export default function Shift({ onClose = () => {} }) {
+  const [showX, setShowX] = useState(false);
+  const [showZ, setShowZ] = useState(false);
 
-  const handleConfirm = () => {
-    setShowConfirm(false);
-    console.log(`${reportType} Report Printed`);
-    window.print(); // Replace with backend logic if needed
-  };
+  const onEsc = useCallback((e) => {
+    if (e.key === "Escape") onClose();
+  }, [onClose]);
 
-  const handleCancel = () => {
-    setShowConfirm(false);
-  };
+  useEffect(() => {
+    window.addEventListener("keydown", onEsc);
+    return () => window.removeEventListener("keydown", onEsc);
+  }, [onEsc]);
 
   return (
-    <div className="shift-modal">
+    <div className="shift-modal" role="dialog" aria-modal="true" aria-labelledby="shift-title">
       <div className="shift-header">
-        <h2>SHIFT</h2>
-        <button className="close-button" onClick={onClose}>✖</button>
+        <h2 id="shift-title">SHIFT</h2>
+        <button type="button" className="close-button" aria-label="Close" onClick={onClose}>✖</button>
       </div>
 
       <div className="shift-content">
-        <button className="shift-option clickable" onClick={() => handleReportClick('X')}>
-          <FaPrint className="icon blue" />
-          <div>
-            <strong>X Report</strong>
-            <div className="key-label">F1</div>
-          </div>
+        <button type="button" className="shift-option clickable" onClick={() => setShowX(true)}>
+          <FaPrint className="icon blue" aria-hidden="true" />
+          <div><strong>X Report</strong></div>
         </button>
 
-        <div className="shift-text">
-          Z Report Printer
-          
-        </div>
+        <div className="shift-text">Z Report Printer</div>
 
-        <button className="shift-option clickable" onClick={() => handleReportClick('Z')}>
-          <FaSyncAlt className="icon green" />
-          <div>
-            <strong>Z Report</strong>
-            <div className="key-label">F2</div>
-          </div>
+        <button type="button" className="shift-option clickable" onClick={() => setShowZ(true)}>
+          <FaSyncAlt className="icon green" aria-hidden="true" />
+          <div><strong>Z Report</strong></div>
         </button>
       </div>
 
-      <div className="shift-actions">
-        
-      <button className="close-btn" onClick={onClose}>✖ Cancel</button>
-      </div>
+      {/* X Report modal */}
+      {showX && <XReportConfirmModal open onClose={() => setShowX(false)} />}
 
-      {showConfirm && (
-        <ConfirmModal
-          message={`Print ${reportType} Report?`}
-          onConfirm={handleConfirm}
-          onCancel={handleCancel}
-        />
-      )}
+      {/* Z Report modal (Day Close) */}
+      {showZ && <DayClose open onClose={() => setShowZ(false)} />}
     </div>
   );
-};
+}
 
 Shift.propTypes = {
-  onClose: PropTypes.func.isRequired,
+  onClose: PropTypes.func,
 };
-
-export default Shift;

@@ -1,16 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import './QuantityModal.css';
 import { FaCheckCircle, FaTimesCircle } from 'react-icons/fa';
 
 const QuantityModal = ({ onClose, onSubmit }) => {
   const [value, setValue] = useState('');
+  const inputRef = useRef(null);
 
-  const handleClick = (num) => setValue(value + num);
+  useEffect(() => {
+    inputRef.current?.focus(); // Auto-focus input on mount
+  }, []);
+
+  const handleClick = (num) => setValue(prev => prev + num);
   const handleClear = () => setValue('');
-  const handleBackspace = () => setValue(value.slice(0, -1));
+  const handleBackspace = () => setValue(prev => prev.slice(0, -1));
+
   const handleOk = () => {
-    if (value !== '') onSubmit(value);
+    if (!isNaN(value) && value.trim() !== '') {
+      onSubmit(parseFloat(value));
+    }
   };
 
   return (
@@ -18,11 +26,20 @@ const QuantityModal = ({ onClose, onSubmit }) => {
       <div className="quantity-modal">
         <div className="quantity-modal-header">
           <span>CHANGE QUANTITY</span>
-          <button className="close-btn" onClick={onClose}>×</button>
+          {/* <button className="close-btn" onClick={onClose}>×</button> */}
         </div>
-        <input type="text" className="quantity-display" value={value} readOnly />
+        <input
+          ref={inputRef}
+          type="text"
+          className="quantity-display"
+          value={value}
+          onChange={(e) => {
+            const input = e.target.value;
+            if (/^\d*\.?\d*$/.test(input)) setValue(input); // Allow only valid numbers
+          }}
+        />
         <div className="quantity-buttons">
-          {['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.', '00'].map(num => (
+          {['1','2','3','4','5','6','7','8','9','0','.','00'].map(num => (
             <button key={num} onClick={() => handleClick(num)}>{num}</button>
           ))}
           <button onClick={handleBackspace}>←</button>

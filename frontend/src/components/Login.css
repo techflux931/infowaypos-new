@@ -1,44 +1,49 @@
+/* src/components/Login.css */
+
+/* ===== Page Background ===== */
 .login-background {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
-  justify-content: center;
   align-items: center;
-  background: linear-gradient(to right, #07410d, #07e2a4, #027628);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  flex-direction: column;
+  justify-content: center;
   padding: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #07410d, #07e2a4, #027628);
 }
 
+/* ===== Wrapper ===== */
 .login-wrapper {
   text-align: center;
+  width: 100%;
+  max-width: 520px;
 }
 
+/* ===== Logo ===== */
 .login-main-logo {
-  width: 500px;
-  margin-bottom: 10px;
-  filter: drop-shadow(0 0 5px white);
+  width: 420px;
+  max-width: 80vw;
+  margin: 0 auto 14px;
+  display: block;
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.7));
 }
 
-.login-title {
-  color: rgb(25, 24, 24);
-  font-size: 28px;
-  margin-bottom: 20px;
-}
-
+/* ===== Card ===== */
 .login-box {
-  background: #d2d7d0;
-  padding: 40px;
-  border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(92, 46, 46, 0.2);
   width: 380px;
-  text-align: center;
-  animation: slideFade 0.5s ease-in-out;
+  max-width: 92vw;
+  margin: 0 auto;
+  background: #dfe4dc;
+  padding: 28px 26px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+  text-align: left;
+  animation: slideFade 0.4s ease-in-out;
 }
 
 @keyframes slideFade {
   from {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(-12px);
   }
   to {
     opacity: 1;
@@ -46,55 +51,128 @@
   }
 }
 
+/* ===== Form Layout ===== */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.login-label,
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-weight: 700;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Password label + forgot link */
+.field-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 700;
+  font-size: 14px;
+  color: #333;
+}
+
+/* ===== Inputs ===== */
 .login-form input {
   width: 100%;
   padding: 12px;
-  margin: 12px 0;
   border-radius: 6px;
   border: 1px solid #8393b2;
   font-size: 16px;
+  outline: none;
+  background: #fff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+.login-form input:focus {
+  border-color: #6a0dad;
+  box-shadow: 0 0 0 3px rgba(106, 13, 173, 0.15);
+}
+
+/* ===== Remember Me ===== */
 .login-options {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
   font-size: 14px;
-  margin: 10px 0 20px;
+  margin-top: 4px;
 }
 
 .remember-me {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  gap: 8px;
 }
 
+/* Only checkbox size control */
+.remember-me input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+/* ===== Forgot Password Link ===== */
 .forgot-password {
   background: none;
   border: none;
   color: #0056b3;
   text-decoration: underline;
   cursor: pointer;
-  font-size: 14px;
-  padding-left: 10px;
+  font-size: 13.5px;
+  padding: 0;
+  margin: 0;
 }
 
 .forgot-password:hover {
-  color: #003366;
+  color: #003d80;
 }
 
+/* ===== Error Box ===== */
+.error {
+  background: #fff1f1;
+  color: #9b1515;
+  border: 1px solid #e2b8b8;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* ===== Button ===== */
 .login-button {
   width: 100%;
   padding: 12px;
   background-color: #034835;
-  color: white;
+  color: #fff;
   border: none;
   border-radius: 6px;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.2s ease, transform 0.05s ease;
 }
 
 .login-button:hover {
-  background-color: #d1e8c9;
+  background-color: #026849;
+}
+
+.login-button:active {
+  transform: translateY(1px);
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 480px) {
+  .login-main-logo {
+    width: 320px;
+  }
+
+  .login-box {
+    padding: 22px 18px;
+  }
 }

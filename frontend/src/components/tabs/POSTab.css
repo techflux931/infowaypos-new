@@ -1,0 +1,108 @@
+/* ---------- Theme ---------- */
+:root{
+  --pos-purple:#7a0f87;
+  --pos-green:#1f8c2c;
+  --pos-green-700:#187123;
+  --pos-red:#ef4444;
+  --pos-red-700:#dc2626;
+}
+
+/* ---------- Layout ---------- */
+.pos-tab-container{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 18px 22px;
+  display: grid;
+  gap: 14px;
+}
+
+.pos-tab-container h3{
+  color: var(--pos-purple);
+  font-weight: 800;
+  margin: 0 0 6px;
+}
+
+/* Options grid */
+.pos-settings-grid{
+  display: grid;
+  gap: 14px 28px;
+  grid-template-columns: repeat(3, minmax(280px, 1fr)); /* 3 clean columns */
+}
+
+/* ---------- Checkbox rows (single line) ---------- */
+.pos-check{
+  display: inline-flex;            /* keep input + text on the same line */
+  align-items: center;
+  gap: 10px;
+  min-height: 32px;                /* uniform row height */
+  font-weight: 600;
+  color: #222;
+  white-space: nowrap;             /* prevent wrapping */
+  user-select: none;
+}
+
+.pos-check input[type="checkbox"]{
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: var(--pos-purple);
+  flex: 0 0 auto;
+}
+
+.pos-check span{
+  line-height: 1;                  /* visually centered text */
+}
+
+/* Allow wrapping on small screens so it doesn't overflow */
+@media (max-width: 900px){
+  .pos-settings-grid{ grid-template-columns: 1fr; }
+  .pos-check{ white-space: normal; }
+}
+
+/* ---------- Actions ---------- */
+.pos-actions{
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.pos-btn{
+  appearance: none;
+  border: 0;
+  border-radius: 10px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform .06s ease, background-color .2s ease, box-shadow .2s ease;
+  width: auto;
+  flex: 0 0 auto;
+}
+
+.pos-btn--md{ padding: 11px 20px; font-size: 1rem; }
+.pos-btn--sm{ padding: 8px 14px;  font-size: .95rem; }
+
+.pos-btn--save{
+  background: var(--pos-green);
+  color: #fff;
+  box-shadow: 0 3px 8px rgba(31,140,44,.35);
+}
+.pos-btn--save:hover{ background: var(--pos-green-700); }
+
+.pos-btn--close{
+  background: var(--pos-red);
+  color: #fff;
+  box-shadow: 0 3px 8px rgba(239,68,68,.35);
+}
+.pos-btn--close:hover{ background: var(--pos-red-700); }
+
+.pos-btn:focus-visible{
+  outline: 3px solid rgba(122,15,135,.25);
+  outline-offset: 2px;
+}
+.pos-btn:active{ transform: translateY(1px); }
+.pos-btn[disabled]{ opacity:.55; cursor:not-allowed; transform:none; box-shadow:none; }

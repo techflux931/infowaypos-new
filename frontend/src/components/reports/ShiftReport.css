@@ -1,0 +1,65 @@
+.shf-wrap {
+  padding: 14px;
+  background: #f6f7fb;
+  min-height: 100vh;
+  color: #0f172a;
+}
+
+/* Header */
+.shf-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
+.shf-left   { display:flex; align-items:center; gap:8px; }
+.shf-title  { margin:0; font-weight:800; font-size:20px; }
+.iconbtn {
+  width:36px; height:36px; display:grid; place-items:center;
+  border:0; border-radius:10px; background:#fff; cursor:pointer;
+  box-shadow:0 2px 8px rgba(2,6,23,.08);
+}
+
+/* Banners */
+.shf-banner { margin-bottom:12px; padding:10px 12px; border-radius:10px; font-weight:600; border:1px solid; }
+.shf-banner.ok  { background:#ecfdf5; color:#065f46; border-color:#a7f3d0; }
+.shf-banner.err { background:#fff5f5; color:#991b1b; border-color:#fecaca; }
+
+/* Cards */
+.shf-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:12px;
+}
+.shf-card {
+  display:flex; gap:12px; align-items:center;
+  background:#fff; border:1px solid #e5e7eb; border-radius:14px;
+  padding:14px; cursor:pointer; text-align:left;
+  box-shadow:0 2px 8px rgba(2,6,23,.06);
+}
+.shf-card:hover { background:#f8fafc; }
+.shf-ico { font-size:28px; }
+.shf-ico.blue   { color:#2563eb; }
+.shf-ico.purple { color:#7c3aed; }
+.shf-ico.green  { color:#059669; }
+.shf-ico.red    { color:#dc2626; }
+.shf-card-text { display:flex; flex-direction:column; gap:4px; }
+
+/* Modal */
+.shf-modal { position:fixed; inset:0; background:rgba(2,6,23,.45); display:grid; place-items:center; z-index:50; }
+.shf-modal-card {
+  width:min(520px,92vw);
+  background:#fff; border:1px solid #e5e7eb; border-radius:14px;
+  box-shadow:0 10px 30px rgba(2,6,23,.25);
+  padding:16px;
+}
+.shf-modal-title { margin:0 0 8px; font-size:18px; font-weight:800; }
+.shf-modal-msg   { margin:0 0 16px; color:#334155; }
+.shf-modal-actions { display:flex; gap:10px; justify-content:flex-end; }
+
+/* Form */
+.shf-form { display:grid; gap:8px; margin-bottom:12px; }
+.shf-input {
+  height:36px; border:1px solid #e5e7eb; border-radius:10px;
+  padding:0 10px; outline:none; background:#fff;
+}
+.shf-input:focus { border-color:#6d28d9; box-shadow:0 0 0 4px rgba(109,40,217,.15); }
+
+@media (max-width:720px){
+  .shf-grid { grid-template-columns:1fr 1fr; }
+}

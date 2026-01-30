@@ -1,0 +1,73 @@
+/* src/components/PoleScalePrint.css */
+.pole-print-label {
+  width: 50mm;
+  padding: 6px;
+  border: 2px solid black;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+.pole-header {
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.pole-header h2 {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.pole-header h3 {
+  font-size: 13px;
+  margin: 0;
+}
+
+.pole-product-names {
+  text-align: center;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.pole-product-names strong {
+  font-size: 14px;
+}
+
+.pole-label-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2px;
+  table-layout: fixed;
+}
+
+.pole-label-table td {
+  font-size: 12px;
+  padding: 2px 4px;
+  border: 1px solid black;
+  white-space: nowrap;
+}
+
+.pole-barcode {
+  text-align: center;
+  margin: 4px 0;
+}
+
+.pole-total-price {
+  text-align: right;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Print style */
+@media print {
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  .pole-print-label {
+    width: 50mm;
+    height: auto;
+    border: 2px solid black;
+    padding: 6px;
+  }
+}

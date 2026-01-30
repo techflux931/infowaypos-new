@@ -1,0 +1,171 @@
+/* ============ A4 CARD (SCREEN) ============ */
+.a4 {
+  max-width: 210mm;           /* A4 width */
+  margin: 16px auto;
+  padding: 16px 18px;
+  background: #fff;
+  color: #111;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.1);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.25;
+}
+
+.a4-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 8px;
+}
+
+.a4-actions button,
+.btn-icon {
+  border: 0;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: #2563eb;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  margin-right: 6px;
+}
+
+.btn-icon:hover,
+.a4-actions button:hover {
+  background: #1e40af;
+}
+
+/* ============ HEADER ============ */
+.a4-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 2px solid #e6e8ee;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+}
+
+.a4-head h1 {
+  margin: 0 0 6px 0;
+  font-size: 22px;
+}
+
+.a4-head .to .cap {
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.a4-head .to pre {
+  white-space: pre-wrap;
+  margin: 0;
+  font-family: inherit;
+}
+
+/* ============ TABLE ============ */
+.a4-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 6px;
+}
+
+.a4-table thead th {
+  text-align: left;
+  background: #f4f6fb;
+  border-bottom: 1px solid #e3e6ef;
+  padding: 8px 6px;
+  font-size: 13px;
+}
+
+.a4-table td {
+  padding: 8px 6px;
+  border-bottom: 1px dashed #eaeaea;
+  font-size: 13px;
+  vertical-align: top;
+}
+
+.a4-table .num {
+  text-align: right;
+}
+
+.a4-table .name {
+  font-weight: 600;
+}
+
+.a4-table .name-ar {
+  font-weight: 600;
+  direction: rtl;
+}
+
+.a4-table .note {
+  color: #666;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.a4-table .empty {
+  text-align: center;
+  color: #666;
+}
+
+/* ============ TOTALS ============ */
+.a4-totals {
+  margin-top: 10px;
+  margin-left: auto;
+  width: 60%;
+}
+
+.a4-totals > div {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.a4-totals .grand {
+  font-size: 15px;
+  font-weight: 800;
+  border-bottom: 0;
+  padding-top: 10px;
+}
+
+/* ============ FOOTER ============ */
+.a4-foot {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #444;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid #eee;
+  padding-top: 8px;
+}
+
+/* ============ PRINT ============ */
+@media print {
+  @page {
+    size: A4;
+    margin: 10mm 8mm;
+  }
+
+  body {
+    background: #fff !important;
+  }
+
+  .a4 {
+    box-shadow: none !important;
+    margin: 0 !important;
+    max-width: none;
+    padding: 0;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .a4-table thead th,
+  .a4-table td {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

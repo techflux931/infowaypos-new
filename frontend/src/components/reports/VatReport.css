@@ -1,0 +1,110 @@
+/* ===== VAT Report (clean CSS) ===== */
+
+.rpt-wrap {
+  /* tokens */
+  --bg:#f7f7fb; --card:#fff; --text:#111827; --muted:#6b7280; --ring:#e5e7eb;
+  --shadow:0 10px 15px -3px rgba(0,0,0,.08), 0 4px 6px -2px rgba(0,0,0,.04);
+  --accent:#6d28d9;           /* purple headline */
+  --accent-strong:#7c3aed;    /* run btn */
+  --accent-focus:rgba(167,139,250,.25);
+
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  padding:20px;
+  box-sizing:border-box;
+}
+
+/* Header */
+.rpt-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+.rpt-header .left{display:flex;align-items:center;gap:12px}
+.rpt-header h2{margin:0;font-size:22px;font-weight:800;letter-spacing:.2px;color:var(--accent)}
+
+/* Icon buttons (Home/Close) */
+.iconbtn{
+  display:grid;place-items:center;width:36px;height:36px;border-radius:10px;
+  border:1px solid var(--ring);background:#fff;cursor:pointer;
+  transition:transform .06s, box-shadow .12s, background .12s
+}
+.iconbtn:hover{box-shadow:var(--shadow);background:#fafafa}
+.iconbtn:active{transform:translateY(1px)}
+
+/* Banners */
+.rpt-error,.rpt-info{border-radius:12px;padding:10px 12px;margin-bottom:12px;font-weight:600}
+.rpt-error{background:#fff1f2;color:#991b1b;border:1px solid #fecaca}
+.rpt-info{background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe}
+
+/* Toolbar */
+.rpt-toolbar{
+  background:var(--card);border:1px solid var(--ring);border-radius:14px;box-shadow:var(--shadow);
+  padding:14px;display:grid;grid-template-columns:repeat(12,1fr);gap:12px;align-items:end;margin-bottom:16px
+}
+.rpt-toolbar .field{grid-column:span 3;display:grid;gap:6px}
+.rpt-toolbar label{font:700 12px/1 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--muted);letter-spacing:.3px}
+.rpt-toolbar input,.rpt-toolbar select{
+  height:36px;border:1px solid var(--ring);border-radius:10px;padding:0 10px;outline:0;background:#fff
+}
+.rpt-toolbar input:focus,.rpt-toolbar select:focus{border-color:var(--accent-strong);box-shadow:0 0 0 3px var(--accent-focus)}
+
+@media (max-width:1100px){.rpt-toolbar .field{grid-column:span 6}}
+@media (max-width:720px){
+  .rpt-toolbar{grid-template-columns:1fr}
+  .rpt-toolbar .field{grid-column:1 / -1}
+}
+
+/* Toolbar actions */
+.rpt-toolbar .actions{grid-column:span 3;display:flex;gap:10px;justify-content:flex-end}
+@media (max-width:1100px){.rpt-toolbar .actions{grid-column:1 / -1;justify-content:flex-start}}
+.act{
+  height:36px;border:0;border-radius:10px;padding:0 16px;color:#fff;font-weight:700;cursor:pointer;
+  transition:transform .06s, filter .12s, box-shadow .12s
+}
+.act:hover{filter:brightness(1.03);box-shadow:var(--shadow)}
+.act:active{transform:translateY(1px)}
+.act.run{background:var(--accent-strong)}
+.act.export{background:#059669}
+.act.print{background:#2563eb}
+
+/* Card & table */
+.rpt-card{background:var(--card);border:1px solid var(--ring);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
+.rpt-tablewrap{width:100%;overflow:auto}
+
+.rpt-table{width:100%;border-collapse:separate;border-spacing:0;min-width:760px}
+.rpt-table thead th{
+  position:sticky;top:0;z-index:5;background:#faf8ff;color:#4c1d95;
+  text-align:left;padding:10px 12px;font-size:12px;letter-spacing:.4px;border-bottom:1px solid var(--ring)
+}
+.rpt-table tbody td{padding:10px 12px;border-bottom:1px solid #f0f0f6;background:#fff}
+.rpt-table tbody tr:nth-child(odd) td{background:#fbfbfe}
+
+.rpt-empty{ text-align:center;padding:28px !important;color:var(--muted) }
+.rpt-loading{padding:28px;text-align:center;color:var(--muted)}
+
+/* Summary */
+.rpt-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:14px 0}
+@media (max-width:720px){.rpt-summary{grid-template-columns:1fr}}
+.rpt-summary .box{
+  background:var(--card);border:1px solid var(--ring);border-radius:14px;box-shadow:var(--shadow);
+  padding:14px;display:flex;align-items:center;justify-content:space-between
+}
+.rpt-summary .box .k{font:700 12px/1 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;color:var(--muted);letter-spacing:.3px}
+.rpt-summary .box .v{font:800 18px/1 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+
+/* Pager */
+.rpt-pager{display:flex;align-items:center;justify-content:center;gap:12px;margin:8px 0 24px}
+.rpt-pager button{
+  height:34px;padding:0 14px;border-radius:10px;border:1px solid var(--ring);background:#fff;font-weight:700;cursor:pointer
+}
+.rpt-pager button:disabled{opacity:.5;cursor:not-allowed}
+
+/* Optional total row */
+.rpt-table tr.total-row td{font-weight:800;background:#f4f2ff}
+
+/* Print */
+@media print{
+  .rpt-toolbar,.rpt-summary,.rpt-pager,.iconbtn{display:none !important}
+  .rpt-wrap{padding:0;background:#fff}
+  .rpt-header{margin:0 0 8px}
+  .rpt-card{border:0;box-shadow:none}
+  .rpt-table thead th{position:static}
+}

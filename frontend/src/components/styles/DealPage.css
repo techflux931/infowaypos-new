@@ -1,0 +1,25 @@
+/* DealPage.css */
+.deal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 30px auto;
+  flex-wrap: wrap;
+  max-width: 600px;
+}
+
+.deal-actions button {
+  background-color: #0d88e6;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.deal-actions button:hover {
+  background-color: #0b6dc1;
+}

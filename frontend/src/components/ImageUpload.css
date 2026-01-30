@@ -1,0 +1,4 @@
+/* src/components/ImageUpload.css */
+.img-upload { display: grid; gap: 8px; }
+.img-upload__row { display:flex; gap:10px; align-items:center; }
+.img-upload__preview img { max-width: 140px; max-height: 140px; border-radius: 8px; border: 1px solid #ddd; }

@@ -1,223 +1,278 @@
-import React, { useState } from 'react';
-import './ItemSummary.css';
+// src/components/ItemSummary.js
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { createPortal } from 'react-dom';
+import './ItemSummary.css';
+
 import CalendarModal from './CalendarModal';
 import ConfirmModal from './PrintModal';
 
-const ItemSummary = ({ onClose }) => {
-  const [groupBy, setGroupBy] = useState('GROUP');
-  const [filterBy, setFilterBy] = useState('DATE');
+export default function ItemSummary({ onClose }) {
+  const [groupBy, setGroupBy] = useState('GROUP');     // GROUP | CATEGORY
+  const [filterBy, setFilterBy] = useState('DATE');    // DATE | SHIFT | DAY
   const [showCalendar, setShowCalendar] = useState(false);
-  const [calendarTarget, setCalendarTarget] = useState('');
+  const [calendarTarget, setCalendarTarget] = useState(''); // 'from' | 'to'
   const [fromDate, setFromDate] = useState('');
   const [toDate, setToDate] = useState('');
+  const [shift, setShift] = useState('');
+  const [day, setDay] = useState('');
   const [selectType, setSelectType] = useState('');
   const [groupByDate, setGroupByDate] = useState(false);
   const [includeStock, setIncludeStock] = useState(false);
   const [detailed, setDetailed] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
 
-  const handleDateClick = (target) => {
+  // Esc closes; Enter opens print confirm
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === 'Escape') onClose();
+      if (e.key === 'Enter') setShowConfirm(true);
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [onClose]);
+
+  const openCalendar = (target) => {
+    if (filterBy !== 'DATE') return;
     setCalendarTarget(target);
     setShowCalendar(true);
   };
 
   const handleDateSelect = (date) => {
-    const formatted = date.toLocaleDateString('en-GB');
+    const formatted = date.toLocaleDateString('en-GB'); // DD/MM/YYYY
     if (calendarTarget === 'from') setFromDate(formatted);
     if (calendarTarget === 'to') setToDate(formatted);
     setShowCalendar(false);
   };
 
-  const handleConfirm = () => {
+  const onPrintConfirm = () => {
     setShowConfirm(false);
-    window.print();
-  };
-
-  const handleCancel = () => {
-    setShowConfirm(false);
+    window.print(); // TODO: replace with API call
   };
 
   return (
-    <div className="item-summary-modal">
-      <div className="item-summary-header">
-        <h2>ITEM SUMMARY REPORT</h2>
-        <button className="close-button" onClick={onClose}>✖</button>
-      </div>
+    <>
+      {/* Backdrop */}
+      <div className="is-backdrop" onClick={onClose} />
 
-      <div className="item-summary-body">
-        <div className="top-section">
-          <div className="group-by">
-            <label htmlFor="group-button">Group by</label>
-            <button
-              id="group-button"
-              className={groupBy === 'GROUP' ? 'active' : ''}
-              onClick={() => setGroupBy('GROUP')}
-            >
-              GROUP
-            </button>
-            <button
-              className={groupBy === 'CATEGORY' ? 'active' : ''}
-              onClick={() => setGroupBy('CATEGORY')}
-            >
-              CATEGORY
-            </button>
-          </div>
+      {/* Modal */}
+      <div
+        className="item-summary-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Item Summary Report"
+      >
+        <div className="item-summary-header">
+          <h2>ITEM SUMMARY REPORT</h2>
+          <button type="button" className="is-close" onClick={onClose} aria-label="Close">
+            ✖
+          </button>
+        </div>
 
-          <div className="filter-by">
-            
+        <div className="item-summary-body">
+          {/* Top row */}
+          <div className="is-top">
+            {/* Group by */}
+            <div className="is-groupby">
+              <label className="is-label">Group by</label>
+              <div className="is-pills">
+                <button
+                  type="button"
+                  className={groupBy === 'GROUP' ? 'is-pill active' : 'is-pill'}
+                  onClick={() => setGroupBy('GROUP')}
+                >
+                  GROUP
+                </button>
+                <button
+                  type="button"
+                  className={groupBy === 'CATEGORY' ? 'is-pill active' : 'is-pill'}
+                  onClick={() => setGroupBy('CATEGORY')}
+                >
+                  CATEGORY
+                </button>
+              </div>
+            </div>
 
-            <div className="filter-radio-group">
-              <div className="filter-radio-option">
+            {/* Filter by */}
+            <div className="is-filter">
+              {/* DATE */}
+              <div className="is-filter-row">
                 <input
-                  id="filter-date"
+                  id="f-date"
                   type="radio"
                   name="filter"
                   checked={filterBy === 'DATE'}
                   onChange={() => setFilterBy('DATE')}
                 />
-                <label htmlFor="filter-date">DATE</label>
-                <div className="date-range">
-                  <div className="date-field">
-                    <span>FROM–</span>
+                <label htmlFor="f-date">DATE</label>
+
+                <div className="is-date-range">
+                  <div className="is-date">
+                    <span>FROM—</span>
                     <input
                       type="text"
                       value={fromDate}
                       readOnly
-                      onClick={() => handleDateClick('from')}
+                      placeholder="Select"
+                      onClick={() => openCalendar('from')}
+                      disabled={filterBy !== 'DATE'}
                     />
                   </div>
-                  <div className="date-field">
-                    <span>TO–</span>
+                  <div className="is-date">
+                    <span>TO—</span>
                     <input
                       type="text"
                       value={toDate}
                       readOnly
-                      onClick={() => handleDateClick('to')}
+                      placeholder="Select"
+                      onClick={() => openCalendar('to')}
+                      disabled={filterBy !== 'DATE'}
                     />
                   </div>
                 </div>
               </div>
 
-              <div className="filter-radio-option">
+              {/* SHIFT */}
+              <div className="is-filter-row">
                 <input
-                  id="filter-shift"
+                  id="f-shift"
                   type="radio"
                   name="filter"
                   checked={filterBy === 'SHIFT'}
                   onChange={() => setFilterBy('SHIFT')}
                 />
-                <label htmlFor="filter-shift">SHIFT</label>
-                <select>
-                  <option>-- Select Shift --</option>
-                  <option>Morning</option>
-                  <option>Evening</option>
+                <label htmlFor="f-shift">SHIFT</label>
+                <select
+                  value={shift}
+                  onChange={(e) => setShift(e.target.value)}
+                  disabled={filterBy !== 'SHIFT'}
+                >
+                  <option value="">-- Select Shift --</option>
+                  <option value="Morning">Morning</option>
+                  <option value="Evening">Evening</option>
                 </select>
               </div>
 
-              <div className="filter-radio-option">
+              {/* DAY */}
+              <div className="is-filter-row">
                 <input
-                  id="filter-day"
+                  id="f-day"
                   type="radio"
                   name="filter"
                   checked={filterBy === 'DAY'}
                   onChange={() => setFilterBy('DAY')}
                 />
-                <label htmlFor="filter-day">DAY</label>
-                <select>
-                  <option>-- Select Day --</option>
-                  <option>Today</option>
-                  <option>Yesterday</option>
+                <label htmlFor="f-day">DAY</label>
+                <select
+                  value={day}
+                  onChange={(e) => setDay(e.target.value)}
+                  disabled={filterBy !== 'DAY'}
+                >
+                  <option value="">-- Select Day --</option>
+                  <option value="Today">Today</option>
+                  <option value="Yesterday">Yesterday</option>
                 </select>
               </div>
             </div>
           </div>
-        </div>
 
-        <div className="select-by-section">
-          <div className="select-left">
-            <label htmlFor="detailed">
+          {/* Select & flags */}
+          <div className="is-select-row">
+            <label className="is-checkbox">
               <input
-                id="detailed"
                 type="checkbox"
                 checked={detailed}
-                onChange={() => setDetailed(!detailed)}
+                onChange={() => setDetailed((v) => !v)}
               />
-              {' '}Detailed
+              Detailed
+            </label>
+
+            <div className="is-select">
+              <label htmlFor="group-select">
+                <strong>{groupBy === 'CATEGORY' ? 'Category' : 'Group'}</strong>
+              </label>
+              <select
+                id="group-select"
+                value={selectType}
+                onChange={(e) => setSelectType(e.target.value)}
+              >
+                <option value="">-- Select --</option>
+                {groupBy === 'CATEGORY' ? (
+                  <>
+                    <option value="DEFAULT">DEFAULT CATEGORY</option>
+                    <option value="BAKES">BAKES</option>
+                  </>
+                ) : (
+                  <>
+                    <option value="Group">Group</option>
+                    <option value="Type">Type</option>
+                  </>
+                )}
+              </select>
+            </div>
+          </div>
+
+          <div className="is-flags">
+            <label className="is-checkbox">
+              <input
+                type="checkbox"
+                checked={groupByDate}
+                onChange={() => setGroupByDate((v) => !v)}
+              />
+            Group by Date
+            </label>
+
+            <label className="is-checkbox">
+              <input
+                type="checkbox"
+                checked={includeStock}
+                onChange={() => setIncludeStock((v) => !v)}
+              />
+            Include Stock
             </label>
           </div>
-          <div className="select-right">
-            <label htmlFor="group-select">
-              <strong>{groupBy === 'CATEGORY' ? 'Category' : 'Group'}</strong>
-            </label>
-            <select
-              id="group-select"
-              value={selectType}
-              onChange={(e) => setSelectType(e.target.value)}
-            >
-              <option value="">--Select--</option>
-              {groupBy === 'CATEGORY' ? (
-                <>
-                  <option value="DEFAULT">DEFAULT CATEGORY</option>
-                  <option value="BAKES">BAKES</option>
-                </>
-              ) : (
-                <>
-                  <option value="group">Group</option>
-                  <option value="type">Type</option>
-                </>
-              )}
-            </select>
+
+          <div className="is-actions">
+            <button type="button" className="is-ok" onClick={() => setShowConfirm(true)}>
+              ✓ Ok
+            </button>
+            <button type="button" className="is-closebtn" onClick={onClose}>
+              ✖ Close
+            </button>
           </div>
         </div>
 
-        <div className="check-section">
-          <label htmlFor="groupByDate">
-            <input
-              id="groupByDate"
-              type="checkbox"
-              checked={groupByDate}
-              onChange={() => setGroupByDate(!groupByDate)}
-            />
-            {' '}Group by Date
-          </label>
-          <label htmlFor="includeStock">
-            <input
-              id="includeStock"
-              type="checkbox"
-              checked={includeStock}
-              onChange={() => setIncludeStock(!includeStock)}
-            />
-            {' '}Include Stock
-          </label>
-        </div>
+        {/* Calendar in a portal so it stacks above all modals */}
+        {showCalendar &&
+          createPortal(
+            <div className="calendar-layer">
+              <CalendarModal
+                onSelect={handleDateSelect}
+                onClose={() => setShowCalendar(false)}
+              />
+            </div>,
+            document.body
+          )
+        }
 
-        <div className="action-buttons">
-          <button className="ok-btn" onClick={() => setShowConfirm(true)}><span>✔</span> Ok</button>
-          <button className="close-btn" onClick={onClose}><span>✖</span> Close</button>
-        </div>
+        {/* Print confirm in portal too */}
+        {showConfirm &&
+          createPortal(
+            <div className="calendar-layer">
+              <ConfirmModal
+                message="Print Report ?"
+                onConfirm={onPrintConfirm}
+                onCancel={() => setShowConfirm(false)}
+              />
+            </div>,
+            document.body
+          )
+        }
       </div>
-
-      {showCalendar && (
-        <CalendarModal
-          onSelect={handleDateSelect}
-          onClose={() => setShowCalendar(false)}
-        />
-      )}
-
-      {showConfirm && (
-        <ConfirmModal
-          message="Print Report ?"
-          onConfirm={handleConfirm}
-          onCancel={handleCancel}
-        />
-      )}
-    </div>
+    </>
   );
-};
+}
 
 ItemSummary.propTypes = {
   onClose: PropTypes.func.isRequired,
 };
-
-export default ItemSummary;

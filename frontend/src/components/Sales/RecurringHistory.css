@@ -1,0 +1,19 @@
+/* src/components/Sales/RecurringHistory.css */
+.history-modal { max-width: 960px; }
+
+.history-table .right { text-align: right; }
+
+.items-subtable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+}
+.items-subtable th,
+.items-subtable td {
+  border-bottom: 1px solid #eee;
+  padding: 6px 8px;
+  font-size: 13px;
+  text-align: left;
+}
+.items-subtable th { background: #faf6ff; color: #4a1d75; }
+.items-subtable .right { text-align: right; }

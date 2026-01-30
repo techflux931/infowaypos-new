@@ -1,0 +1,201 @@
+/* ===============================
+   Developer Panel Container
+=============================== */
+.developer-panel {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px 30px;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ===============================
+   Header Section
+=============================== */
+.dev-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.dev-header h2 {
+  font-size: 20px;
+  color: #333;
+  margin: 0;
+}
+
+.dev-header button {
+  background-color: #b30877;
+  color: #fff;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.dev-header button:hover {
+  background-color: #93065e;
+}
+
+/* ===============================
+   Info Section
+=============================== */
+.dev-info {
+  font-size: 15px;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.dev-info p {
+  margin: 6px 0;
+}
+
+/* ===============================
+   Multiple Shops Usage Table
+=============================== */
+.shops-section {
+  margin-top: 20px;
+  background: #ffeaf6;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.shops-section h3 {
+  margin-bottom: 10px;
+  color: #b30877;
+}
+
+.shops-section table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.shops-section th,
+.shops-section td {
+  padding: 8px 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+.shops-section th {
+  background-color: #b30877;
+  color: #fff;
+}
+
+/* ===============================
+   Pole Scale Settings
+=============================== */
+.dev-settings {
+  margin-top: 20px;
+  background: #ffeaf6;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.dev-settings h3 {
+  margin-bottom: 10px;
+  color: #b30877;
+}
+
+.setting-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.toggle-on {
+  background: green;
+  color: white;
+  padding: 6px 15px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.toggle-off {
+  background: red;
+  color: white;
+  padding: 6px 15px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.error-msg {
+  color: red;
+  font-size: 14px;
+}
+
+/* ===============================
+   POS Screen Access Buttons
+=============================== */
+.pos-access {
+  margin-top: 20px;
+  background: #ffeaf6;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.pos-access h3 {
+  margin-bottom: 10px;
+  color: #b30877;
+}
+
+.access-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.pos-btn {
+  background: #b30877;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pos-btn:hover {
+  background: #93065e;
+}
+
+/* ===============================
+   Actions Section
+=============================== */
+.dev-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.dev-actions button {
+  padding: 10px 14px;
+  border: none;
+  font-size: 15px;
+  background-color: #444;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.dev-actions button:hover {
+  background-color: #2c2c2c;
+}

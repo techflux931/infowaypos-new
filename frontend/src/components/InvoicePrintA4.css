@@ -1,0 +1,433 @@
+/* =================== PAGE & THEME =================== */
+@page {
+  size: A4;
+  margin: 10mm;
+}
+
+:root {
+  --brand: #c01818;
+  --brand-ink: #a91414;
+  --line: #e4b7b7;
+  --ink: #000;
+  --muted: #444;
+  --bg: #fff;
+  --paid: #000;
+  --change: #000;
+}
+
+/* ==================================================== */
+/*  DEFENSIVE OVERRIDES (no rotated/vertical text)      */
+/* ==================================================== */
+.a4-invoice,
+.a4-invoice * {
+  writing-mode: horizontal-tb !important;
+  -webkit-writing-mode: horizontal-tb !important;
+  text-orientation: mixed !important;
+  transform: none !important;
+  rotate: 0deg !important;
+  color: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+  box-sizing: border-box;
+}
+
+.a4-invoice .ar {
+  direction: rtl !important;
+  unicode-bidi: plaintext;
+}
+
+/* =================== CANVAS =================== */
+.a4-invoice {
+  max-width: 190mm;
+  margin: 0 auto;
+  background: var(--bg);
+  font: 12px/1.35 "Segoe UI", Tahoma, Arial, sans-serif;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.t-center {
+  text-align: center;
+}
+
+.t-right {
+  text-align: right;
+}
+
+/* =================== LETTERHEAD =================== */
+.lh {
+  display: grid;
+  /* 3-column grid matching body: 1.2 + 0.9 + 0.9 */
+  grid-template-columns: 1.2fr 0.9fr 0.9fr;
+  gap: 0;
+  border: 1px solid var(--brand-ink);
+  border-bottom: none;
+  padding: 6mm 6mm 4mm;
+  align-items: center;
+}
+
+/* logo + company span first two columns */
+.lh-brand {
+  grid-column: 1 / span 2;
+  text-align: center;
+}
+
+.lh-logo {
+  height: 24mm;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 2mm;
+}
+
+.lh-title .en {
+  display: block;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.lh-title .ar {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  margin-top: 1mm;
+}
+
+.lh-contact {
+  margin-top: 2mm;
+  font-size: 11px;
+}
+
+/* QR column = 3rd column */
+.lh-qrbox {
+  grid-column: 3 / 4;
+  justify-self: stretch;
+  align-self: stretch;
+  border-left: 1px solid var(--brand-ink);
+  padding: 4mm;
+}
+
+.qr-box {
+  width: 100%;
+  height: 100%;
+  max-width: 45mm;
+  max-height: 45mm;
+  margin-left: auto;
+  background: #fff;
+  border: 1px solid var(--brand-ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qr-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* =================== RIBBON (customer + title + meta) =================== */
+.ribbon.grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.9fr 0.9fr;
+  border: 1px solid var(--brand-ink);
+  border-top: none;
+  background: #fff;
+}
+
+.rib-cell {
+  min-height: 26mm;
+  border-left: 1px solid var(--brand-ink);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3mm 4mm;
+}
+
+.rib-cell:first-child {
+  border-left: none;
+}
+
+/* customer box */
+.mscell .ms-head {
+  font-weight: 600;
+  margin-bottom: 2mm;
+}
+
+.mscell .ms-body .ms-name {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.mscell .ms-addr {
+  margin-top: 1mm;
+  font-size: 11px;
+}
+
+/* tax cell */
+.taxcell {
+  text-align: center;
+  align-items: center;
+}
+
+.taxcell .tax-title {
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+
+.trn-line {
+  margin-top: 3mm;
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 14px;
+  border: 1px solid var(--brand-ink);
+  background: #fff !important;
+  font-weight: 800;
+  font-size: 11px;
+}
+
+/* meta box on right */
+.ibox {
+  border: 1px solid var(--brand-ink);
+  background: #fff;
+}
+
+.ibox-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6mm;
+  padding: 3.5mm 4mm;
+  border-bottom: 1px solid var(--line);
+}
+
+.ibox-row:last-child {
+  border-bottom: none;
+}
+
+.ibox-row label {
+  color: #000 !important;
+}
+
+.ibox-row .val {
+  text-align: right;
+  font-weight: 600;
+}
+
+/* =================== TABLE =================== */
+.inv-table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  border: 1px solid var(--brand-ink);
+  margin-top: -1px;
+  table-layout: fixed !important;
+  background: #fff;
+}
+
+.inv-table thead th {
+  border: 1px solid var(--brand-ink);
+  padding: 2.6mm 1.6mm;
+  text-align: center;
+  vertical-align: middle;
+  white-space: normal !important;
+  word-break: keep-all !important;
+  overflow-wrap: break-word !important;
+  line-height: 1.15 !important;
+}
+
+.inv-table thead .th-en,
+.inv-table thead .th-ar {
+  display: block;
+}
+
+.inv-table thead .th-en {
+  font-weight: 700;
+  font-size: 11.2px;
+}
+
+.inv-table thead .th-ar {
+  margin-top: 2px;
+  font-size: 10px;
+  line-height: 1.1;
+}
+
+.inv-table tbody td {
+  border: 1px solid var(--line);
+  padding: 2.2mm 2mm !important;
+  vertical-align: top;
+  white-space: normal !important;
+}
+
+.inv-table th.num,
+.inv-table td.num {
+  text-align: right !important;
+  white-space: nowrap !important;
+}
+
+.name-en {
+  font-weight: 600;
+}
+
+.name-ar {
+  font-size: 11px;
+}
+
+/* =================== TOTALS CARD (RIGHT) =================== */
+.inv-table tfoot {
+  display: block;
+  width: 78mm;
+  margin: 4mm 0 2mm auto;
+  border: 1px solid var(--brand-ink);
+  border-top: none;
+  background: #fff;
+}
+
+.inv-table tfoot .tf-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0;
+  border-top: 1px solid var(--brand-ink);
+}
+
+.inv-table tfoot .tf-row:first-child {
+  border-top: 1px solid var(--brand-ink);
+}
+
+.inv-table tfoot .tf-spacer {
+  display: none !important;
+}
+
+.inv-table tfoot .tf-label {
+  text-align: right;
+  padding: 2.4mm 2.2mm;
+  font-weight: 700;
+}
+
+.inv-table tfoot .tf-val {
+  text-align: right;
+  padding: 2.4mm 2.2mm;
+  font-weight: 800;
+}
+
+.inv-table tfoot .tf-gt .tf-label,
+.inv-table tfoot .tf-gt .tf-val {
+  background: #ffecec;
+  border-top: 2px solid var(--brand-ink);
+}
+
+.inv-table tfoot .tf-paid .tf-label,
+.inv-table tfoot .tf-paid .tf-val {
+  font-weight: 900 !important;
+}
+
+.inv-table tfoot .tf-change .tf-label,
+.inv-table tfoot .tf-change .tf-val {
+  font-weight: 800;
+}
+
+/* =================== FOOTER + SIGNATURES (NO BARCODE) =================== */
+.footer-wrap {
+  border: 1px solid var(--brand-ink);
+  border-top: none;
+  background: #fff;
+  margin-top: 2mm;
+  padding-bottom: 4mm; /* just small breathing space */
+}
+
+.boxed-footer {
+  border: 0;
+  background: transparent;
+}
+
+.sign-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--brand-ink);
+}
+
+.sign-cell {
+  border-right: 1px solid var(--brand-ink);
+  padding: 4mm 3mm 6mm;
+}
+
+.sign-cell:last-child {
+  border-right: none;
+}
+
+.sign-title {
+  font-weight: 600;
+  margin-bottom: 9mm;
+}
+
+.sign-line {
+  height: 0;
+  border-top: 1px solid var(--ink);
+}
+
+.sign-line.long {
+  width: 85%;
+}
+
+.decl-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  border-top: 1px solid var(--brand-ink);
+}
+
+.decl-cell {
+  border-right: 1px solid var(--brand-ink);
+  padding: 3mm;
+  font-size: 11.5px;
+}
+
+.decl-cell:last-child {
+  border-right: none;
+}
+
+/* =================== SCREEN BUTTONS =================== */
+.actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  margin: 10px 0 20px;
+}
+
+.btn {
+  padding: 8px 14px;
+  border: 1px solid var(--brand-ink);
+  background: #fff;
+  cursor: pointer;
+}
+
+.btn.primary {
+  background: #fff;
+  border-color: var(--brand-ink);
+}
+
+/* links */
+.a4-invoice a {
+  color: #000 !important;
+  text-decoration: none !important;
+}
+
+/* --- PRINT: hide buttons, ensure invoice visible --- */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .a4-invoice {
+    max-width: 190mm;
+    margin: 0 auto;
+  }
+
+  .a4-invoice,
+  .a4-invoice * {
+    visibility: visible !important;
+  }
+}
+

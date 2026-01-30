@@ -1,10 +1,21 @@
 package com.pos.repository;
 
+import com.pos.model.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-import com.pos.model.User;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
 
 public interface UserRepository extends MongoRepository<User, String> {
-    User findByUsernameAndPassword(String username, String password);
-    User findByUsername(String username);
+
+    Optional<User> findByUsernameIgnoreCase(String username);
+
+    boolean existsByUsernameIgnoreCase(String username);
+
+    List<User> findByRoleIn(Collection<String> roles);
+
+    // Needed by ReturnAuthService.verify(cardUid)
+    // Ensure your User entity has the field: private String returnCardUid;
+    Optional<User> findByReturnCardUid(String returnCardUid);
 }

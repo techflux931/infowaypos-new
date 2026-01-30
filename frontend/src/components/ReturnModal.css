@@ -1,12 +1,23 @@
+/* Optional: page dimmer under the modal */
+.return-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.35);
+  z-index: 1002;
+}
 
+/* Modal */
 .return-modal {
   position: fixed;
-  top: 20%;
-  left: 32%;
-  width: 600px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 620px;
+  max-width: calc(100% - 32px);
+  max-height: calc(100dvh - 80px);
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 15px rgba(0,0,0,.3);
   z-index: 1003;
   font-family: Arial, sans-serif;
   display: flex;
@@ -14,37 +25,35 @@
   overflow: hidden;
 }
 
+/* Header */
 .return-header {
   background-color: #643fc2;
-  color: white;
+  color: #fff;
   padding: 16px 24px;
   font-size: 22px;
-  font-weight: bold;
+  font-weight: 700;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
 .return-header .close-btn {
   background: transparent;
-  border: none;
+  border: 0;
   font-size: 20px;
-  color: white;
+  color: inherit;
   cursor: pointer;
 }
+.return-header .close-btn:hover { opacity: .9; }
 
+/* Body */
 .return-body {
-  padding: 24px;
+  padding: 20px 24px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
+  overflow-y: auto;
 }
-
-.return-body label {
-  font-weight: bold;
-  font-size: 15px;
-}
-
+.return-body label { font-weight: 700; font-size: 15px; }
 .return-body input[type="password"],
 .return-body input[type="text"] {
   padding: 10px;
@@ -53,53 +62,83 @@
   border: 1px solid #ccc;
   width: 100%;
 }
-
-.card-read-section {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.return-body input:focus-visible {
+  outline: 3px solid #6b46c1;
+  outline-offset: 1px;
 }
 
-.card-read-section button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  border: none;
-  color: white;
-  font-weight: bold;
-  border-radius: 6px;
+/* Verify row + pill */
+.verify-row { display: flex; align-items: center; gap: 10px; margin: 6px 0 2px; }
+.verify-btn {
+  height: 36px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 8px;
+  background: #6b46c1;
+  color: #fff;
+  font-weight: 700;
   cursor: pointer;
-  font-size: 15px;
+}
+.verify-btn:disabled { opacity: .6; cursor: not-allowed; }
+
+.approver-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #f1f5ff;
+  color: #273b6a;
+  border: 1px solid #dbe3ff;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 13px;
 }
 
+/* Actions */
 .return-actions {
   display: flex;
   justify-content: space-evenly;
-  padding: 16px;
   gap: 14px;
+  padding: 16px;
 }
-
 .return-actions button {
   padding: 10px 24px;
   font-size: 15px;
-  font-weight: bold;
-  border: none;
+  font-weight: 700;
+  border: 0;
   border-radius: 8px;
-  cursor: pointer;
-  min-width: 100px;
-  display: flex;
+  min-width: 110px;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
+  cursor: pointer;
 }
 
-.return-actions .confirm-btn {
-  background-color: #d4edda;
-  color: #155724;
-  border: 1px solid #c3e6cb;
+/* Match your React classes */
+.ok-btn {
+  background: #16a34a;   /* green */
+  color: #fff;
 }
+.ok-btn:hover { background: #15803d; }
 
-.return-actions .cancel-btn {
-  background-color: #f8d7da;
-  color: #721c24;
+.cancel-btn {
+  background: #ef4444;   /* red */
+  color: #fff;
+}
+.cancel-btn:hover { background: #dc2626; }
+
+/* Error message */
+.error-msg {
+  background: #fdecea;
+  color: #b00020;
   border: 1px solid #f5c6cb;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* Small screens */
+@media (max-width: 480px) {
+  .return-modal { max-height: calc(100dvh - 24px); }
+  .return-body { padding: 16px; gap: 12px; }
 }

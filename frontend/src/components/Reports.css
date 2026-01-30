@@ -1,0 +1,80 @@
+/* Simple, clean grid for Reports */
+
+.reports-wrapper {
+  min-height: 100vh;
+  background: #f6f7fb;
+  padding: clamp(12px, 2.5vw, 24px);
+  color: #0f172a;
+}
+
+.reports-topbar {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.home-btn {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  cursor: pointer;
+}
+.home-btn:hover { background: #f8fafc; }
+
+.reports-title {
+  margin: 0;
+  text-align: center;
+  font-size: clamp(20px, 2.6vw, 28px);
+  font-weight: 800;
+}
+
+.reports-spacer { width: 40px; height: 40px; } /* symmetry */
+
+.reports-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+
+.report-card {
+  display: grid;
+  grid-auto-flow: row;
+  justify-items: center;
+  gap: 12px;
+  padding: 20px 16px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  box-shadow: 0 6px 24px rgba(2, 6, 23, 0.06);
+  cursor: pointer;
+  outline: none;
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+.report-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.1);
+  border-color: #d1d5db;
+}
+.report-card:focus-visible {
+  border-color: #6d28d9;
+  box-shadow: 0 0 0 4px rgba(109, 40, 217, 0.15);
+}
+
+.report-icon {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.report-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+  text-align: center;
+}

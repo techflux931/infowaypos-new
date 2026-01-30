@@ -1,0 +1,79 @@
+/* ================== Calculator Drawer (Grey/White theme) ================== */
+
+/* Overlay */
+.calc-backdrop{
+  position:fixed; inset:0;
+  background:rgba(0,0,0,.25);
+  z-index:1100;
+}
+
+/* Right-side drawer */
+.calc-drawer{
+  position:fixed; top:0; right:0; height:100vh; width:min(420px, 92vw);
+  background:#f9f9f9;            /* light grey background */
+  color:#000;                    /* black text */
+  z-index:1110;
+  box-shadow:-14px 0 30px rgba(0,0,0,.18);
+  display:flex; flex-direction:column;
+  padding:16px; gap:12px;
+  border-left:1px solid #ccc;
+  font-family:"Segoe UI", Arial, sans-serif;
+}
+
+/* Header */
+.calc-head{display:flex; align-items:center; justify-content:space-between}
+.calc-head h3{margin:0; font-weight:700}
+.calc-close{
+  border:0; background:#d32f2f; color:#fff;
+  width:36px; height:36px; border-radius:8px;
+  font-size:20px; line-height:1; cursor:pointer;
+}
+
+/* Input */
+.calc-input{
+  height:56px; border:1px solid #bbb; border-radius:6px;
+  background:#fff; color:#000;
+  padding:0 14px; font-size:22px; outline:none;
+}
+
+/* Pad layout: grid + tall Enter column */
+.calc-pad{display:grid; grid-template-columns: 1fr 120px; gap:12px; align-items:start}
+.pad-grid{display:grid; grid-template-columns: repeat(3, 1fr); gap:12px}
+
+/* Square keys */
+.pad-key{
+  height:68px;
+  border:1px solid #bbb;
+  border-radius:6px;         /* square corners */
+  background:#fff;
+  color:#000;
+  font-size:22px; font-weight:600;
+  cursor:pointer;
+}
+.pad-key.warn{ background:#ffeaea; border-color:#d32f2f; color:#d32f2f; }
+.pad-key:hover{background:#f0f0f0}
+.pad-key:active{transform:scale(.97)}
+
+/* Enter column */
+.enter-col{
+  height: calc(6*68px + 5*12px);
+  border:0; border-radius:8px;
+  background:#2e7d32;       /* green */
+  color:#fff; font-weight:700; font-size:24px;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+}
+.enter-result{
+  margin-top:10px;
+  font-size:20px; font-weight:600;
+  background:#fff; color:#000;
+  padding:6px 10px;
+  border-radius:6px;
+  min-width:80px; text-align:center;
+}
+
+/* Small screens */
+@media (max-width: 520px){
+  .calc-drawer{width:100vw}
+  .pad-key{height:60px; font-size:20px}
+  .enter-col{height: calc(6*60px + 5*12px)}
+}

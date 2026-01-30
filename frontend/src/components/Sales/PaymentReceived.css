@@ -1,0 +1,104 @@
+:root{
+  --purple:#6a0dad;
+  --purple-600:#580a9e;
+  --purple-50:#f3e6ff;
+  --border:#ddd;
+}
+
+.full-screen{min-height:100vh;background:#fff;}
+
+/* HEADER */
+.payment-header{
+  position:fixed;top:0;left:0;right:0;height:56px;
+  display:flex;align-items:center;gap:12px;
+  background:#fff;border-bottom:1px solid var(--border);
+  padding:0 16px;z-index:10;box-shadow:0 1px 4px rgba(0,0,0,.08);
+}
+.payment-header h2{
+  margin:0;flex:1;text-align:center;color:var(--purple);
+  font-size:1.25rem;font-weight:700;letter-spacing:.2px;
+}
+.icon-btn{background:none;border:0;padding:6px 8px;font-size:20px;color:var(--purple);cursor:pointer;}
+.header-actions{display:flex;align-items:center;gap:8px;}
+.close-square{
+  background:#ff2b2b;color:#fff;border:0;width:34px;height:34px;
+  display:inline-flex;align-items:center;justify-content:center;border-radius:6px;cursor:pointer;
+}
+
+/* PAGE */
+.payment-received-container{
+  max-width:100%;margin:0 auto;padding:72px 18px 20px;
+  font-family:'Segoe UI',Tahoma,Verdana,sans-serif;color:#333;
+}
+
+/* FILTERS */
+.payment-filters{
+  display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:10px 0 14px;
+}
+.payment-filters input,
+.payment-filters select{
+  padding:8px 12px;font-size:14px;border:1px solid #ccc;border-radius:8px;min-width:200px;outline:none;
+}
+.payment-filters input:focus,
+.payment-filters select:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(106,13,173,.12);}
+.btn{padding:8px 12px;border-radius:10px;border:1px solid #d7c7ff;background:#fff;cursor:pointer;font-weight:600;font-size:14px;}
+.btn.primary{background:var(--purple);color:#fff;border-color:var(--purple);}
+.btn.primary:hover{background:var(--purple-600);}
+.btn.ghost{background:#fff;}
+.add-btn{display:inline-flex;align-items:center;gap:8px;}
+
+/* TABLE */
+.payment-table{
+  width:100%;
+  border:1px solid var(--border);
+  border-collapse:separate;      /* allows fixed layout + widths to apply cleanly */
+  border-spacing:0;
+  font-size:14px;
+  table-layout:fixed;            /* <<< makes column widths below take effect */
+}
+.payment-table th{
+  background:var(--purple-50);color:var(--purple);text-align:left;
+  padding:10px 12px;font-weight:700;border-bottom:1px solid #e6d7ff;white-space:nowrap;
+}
+.payment-table td{
+  padding:10px 12px;border-bottom:1px dashed #eaeaea;vertical-align:middle;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.payment-table tr:nth-child(even){background:#fafafa;}
+.payment-table tr:hover{background:#f7f7f7;}
+.empty{text-align:center;color:#888;}
+
+/* ----- exact column widths (tighten gaps around Amount & Reference) ----- */
+.payment-table thead th:nth-child(1),
+.payment-table tbody td:nth-child(1){width:56px;text-align:center;}     /* # */
+
+.payment-table thead th:nth-child(2),
+.payment-table tbody td:nth-child(2){width:150px;}                      /* Payment Date */
+
+.payment-table thead th:nth-child(3),
+.payment-table tbody td:nth-child(3){width:220px;}                      /* Customer */
+
+.payment-table thead th:nth-child(4),
+.payment-table tbody td:nth-child(4){width:130px;}                      /* Payment Type */
+
+.payment-table thead th:nth-child(5),
+.payment-table tbody td:nth-child(5){                                     /* Amount (AED) */
+  width:130px;
+  text-align:right;
+  font-variant-numeric:tabular-nums;
+  font-feature-settings:"tnum" 1;
+}
+
+.payment-table thead th:nth-child(6),
+.payment-table tbody td:nth-child(6){width:150px;}                      /* Reference */
+
+.payment-table thead th:nth-child(7),
+.payment-table tbody td:nth-child(7){width:120px;text-align:center;}    /* Actions */
+
+/* Slightly tighter on smaller screens (optional) */
+@media (max-width: 1200px){
+  .payment-table thead th:nth-child(3),
+  .payment-table tbody td:nth-child(3){width:200px;}   /* Customer */
+  .payment-table thead th:nth-child(6),
+  .payment-table tbody td:nth-child(6){width:140px;}   /* Reference */
+}

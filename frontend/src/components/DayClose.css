@@ -1,34 +1,43 @@
-/* DayClose.css */
+/* Backdrop */
+.dc-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, .28);
+  z-index: 1000;
+}
+
+/* Modal shell */
 .auth-modal {
   position: fixed;
-  top: 20%;
-  left: 30%;
-  width: 40%;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(560px, 92vw);
   background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  box-shadow: 0 16px 32px rgba(0,0,0,.18);
   font-family: Arial, sans-serif;
   z-index: 1001;
-  padding: 20px;
+  padding: 0 0 16px 0;
 }
 
+/* Header */
 .auth-header {
   background: #0047ab;
-  color: white;
-  padding: 10px 15px;
-  font-size: 20px;
-  font-weight: bold;
+  color: #fff;
+  padding: 12px 16px;
+  font-size: 18px;
+  font-weight: 800;
   text-align: center;
-  border-radius: 8px 8px 0 0;
+  border-radius: 12px 12px 0 0;
+  letter-spacing: .3px;
 }
 
-.auth-body {
-  padding: 20px;
-}
+/* Body */
+.auth-body { padding: 18px 16px 0; }
 
 .auth-body label {
-  font-weight: bold;
-  margin-bottom: 10px;
+  font-weight: 700;
+  margin-bottom: 8px;
   display: block;
 }
 
@@ -36,47 +45,67 @@
   width: 100%;
   padding: 10px;
   font-size: 16px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid #cfd3d9;
+  margin-bottom: 16px;
+  outline: none;
+}
+.auth-body input:focus {
+  border-color: #7ca7ff;
+  box-shadow: 0 0 0 3px rgba(124,167,255,.25);
 }
 
+/* Actions */
 .auth-actions {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   gap: 10px;
+  padding: 4px 0 6px;
 }
 
-.key-btn,
-.ok-btn,
-.close-btn {
+.key-btn, .ok-btn, .close-btn {
   padding: 12px 26px;
   font-size: 16px;
-  font-weight: bold;
-  border-radius: 8px;
+  font-weight: 800;
+  border-radius: 10px;
   cursor: pointer;
   border: 1px solid transparent;
 }
 
 .key-btn {
-  background-color: #e0f0ff;
-  color: #007bff;
-  border: 1px solid #007bff;
+  background: #e0f0ff;
+  color: #0b76ff;
+  border-color: #0b76ff;
 }
 
 .ok-btn {
-  background-color: #e0ffe0;
+  background: #e6ffea;
   color: #28a745;
-  border: 1px solid #28a745;
+  border-color: #28a745;
 }
 
 .close-btn {
-  background-color: #ffe0e0;
+  background: #ffe6e6;
   color: #dc3545;
-  border: 1px solid #dc3545;
+  border-color: #dc3545;
 }
 
+/* Keyboard */
 .keyboard-wrapper {
-  margin-top: 20px;
+  margin: 16px 6px 0;
+  background: #f3f5fb;
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 0 3px 8px rgba(0,0,0,.08);
+}
+
+.simple-keyboard .hg-button {
+  border-radius: 6px;
+  margin: 5px;
+}
+
+/* Responsive */
+@media (max-width: 560px) {
+  .auth-actions { flex-direction: column; gap: 10px; }
 }

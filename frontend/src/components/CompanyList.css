@@ -1,0 +1,141 @@
+/* ============================
+   Container & Heading
+============================ */
+.company-list-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 25px;
+  background: #fff;
+  border-radius: 10px;
+  border-top: 6px solid #b30877; /* POS primary color */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.company-list-container h2 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 25px;
+  color: #b30877;
+}
+
+/* ============================
+   Action Buttons & Inputs
+============================ */
+.company-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.company-actions button {
+  background-color: #b30877;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.company-actions button:hover {
+  background-color: #93065e;
+}
+
+.company-actions input[type="text"] {
+  padding: 7px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  flex: 1;
+  min-width: 220px;
+}
+
+.company-actions input[type="text"]:focus {
+  outline: 2px solid #b30877;
+}
+
+/* ============================
+   Table Styling
+============================ */
+.company-list-container table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fafafa;
+  font-size: 14px;
+}
+
+.company-list-container th,
+.company-list-container td {
+  padding: 12px 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.company-list-container th {
+  background-color: #b30877;
+  color: white;
+  font-weight: bold;
+}
+
+.company-list-container tr:nth-child(even) {
+  background-color: #f4f4f4;
+}
+
+.company-list-container tr:hover {
+  background-color: #f0eaf2;
+}
+
+/* ============================
+   Action Buttons in Table
+============================ */
+.company-list-container td button {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 13px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 6px;
+  transition: background-color 0.3s;
+}
+
+.company-list-container td button:hover {
+  background-color: #495057;
+}
+
+/* ============================
+   Company Logo Thumbnail
+============================ */
+.company-logo {
+  width: 50px;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================
+   Responsive Table (Optional)
+============================ */
+@media (max-width: 768px) {
+  .company-list-container table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .company-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .company-actions input {
+    width: 100%;
+  }
+}

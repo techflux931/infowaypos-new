@@ -1,0 +1,16 @@
+/* src/components/HomeButton.css */
+.home-button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 999;
+}
+
+.home-icon {
+  width: 30px;
+  height: 30px;
+}

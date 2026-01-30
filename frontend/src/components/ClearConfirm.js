@@ -1,3 +1,4 @@
+// ClearConfirm.js
 import React from 'react';
 import PropTypes from 'prop-types';
 import './ClearConfirm.css';
@@ -10,7 +11,7 @@ const ClearConfirm = ({ onYes, onNo }) => {
         <FaQuestionCircle className="icon" />
         <div>
           <h3>POS</h3>
-          <p>Clear All</p>
+          <p>Delete selected item?</p>
         </div>
       </div>
 
