@@ -3,5 +3,11 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-simple-keyboard": "^3.8.87"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "electron": "^40.1.0",
+    "electron-builder": "^26.7.0",
+    "wait-on": "^9.0.3"
   }
 }
