@@ -1,24 +1,26 @@
 // src/components/DirectSalePanel.jsx
 import React, { useEffect, useMemo, useState } from "react";
 import PropTypes from "prop-types";
-import "./DirectSalePanel.css";
 import axios from "axios";
+import "./DirectSalePanel.css";
 
-// ✅ STATIC QUICK ITEM IMAGE MAP (from frontend/public/quickitems)
+// Public base (CRA/Netlify friendly)
+const PUBLIC = process.env.PUBLIC_URL || "";
+
+// ✅ STATIC QUICK ITEM IMAGE MAP (files are inside: frontend/public/quickitems/)
 const QUICK_IMG = {
-  dates: "/quickitems/dates.png",
-  milk: "/quickitems/milk.png",
-  eggs: "/quickitems/eggs.png",
-  eraser: "/quickitems/eraser.png",
-  ghee: "/quickitems/ghee.png",
-  jam: "/quickitems/jam.png",
-  mango: "/quickitems/mango.png",
-  oats: "/quickitems/oats.png",
-  "nail polish": "/quickitems/nail-polish.png",
-  rice: "/quickitems/rice.png",
+  dates: `${PUBLIC}/quickitems/dates.png`,
+  milk: `${PUBLIC}/quickitems/milk.png`,
+  eggs: `${PUBLIC}/quickitems/eggs.png`,
+  eraser: `${PUBLIC}/quickitems/eraser.png`,
+  ghee: `${PUBLIC}/quickitems/ghee.png`,
+  jam: `${PUBLIC}/quickitems/jam.png`,
+  mango: `${PUBLIC}/quickitems/mango.png`,
+  oats: `${PUBLIC}/quickitems/oats.png`,
+  "nail polish": `${PUBLIC}/quickitems/nail-polish.png`,
+  rice: `${PUBLIC}/quickitems/rice.png`,
 };
 
-// Normalize names for mapping
 function normalizeName(name) {
   return String(name || "")
     .trim()
@@ -26,11 +28,16 @@ function normalizeName(name) {
     .replace(/\s+/g, " ");
 }
 
-// Decide image: backend imageUrl first, else quickitems map
 function resolveImage(p) {
-  const backendImg = p?.imageUrl || p?.photo || p?.thumbnail || "";
-  if (backendImg) return backendImg;
+  const backendImg = (p?.imageUrl || p?.photo || p?.thumbnail || "").trim();
 
+  // If backend provides full http(s) image -> use it
+  if (backendImg && /^https?:\/\//i.test(backendImg)) return backendImg;
+
+  // If backend provides "/something.png" -> keep as is (same domain)
+  if (backendImg && backendImg.startsWith("/")) return backendImg;
+
+  // Else use quickitems mapping
   const n = normalizeName(p?.itemNameEn || p?.name);
   return QUICK_IMG[n] || "";
 }
@@ -162,10 +169,10 @@ export default function DirectSalePanel({
                     <img
                       src={img}
                       alt={nameEn}
-                      loading="lazy"
+                      loading="eager"
                       onError={(e) => {
-                        // fallback if image missing
-                        e.currentTarget.style.display = "none";
+                        // ✅ Don't hide entire img; show placeholder instead
+                        e.currentTarget.src = `${PUBLIC}/quickitems/placeholder.png`;
                       }}
                     />
                   ) : (
